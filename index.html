@@ -41,44 +41,143 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-7">
           <div id="filters">
-            <button type="button" class="btn btn-primary btn-filter" data-toggle="button" id="event-filter">Filter by Event</button>
-            <select id="event" class="selectpicker">
-              <option value="">Hurricane Ike</option>
-              <option value="">Hurricane Rita</option>
+            <button type="button" class="btn btn-primary btn-filter" data-toggle="button" id="event-filter-btn">Filter by Event</button>
+            <select id="event-list" class="selectpicker">
+              <option value="Hurricane Ike">Hurricane Ike</option>
+              <option value="Hurricane Rita">Hurricane Rita</option>
             </select>
-            <br /><br />
-            <button type="button" class="btn btn-primary btn-filter" data-toggle="button" id="model-filter">Filter by Model</button>
-            <select id="model" class="selectpicker">
-              <option value="">ADCIRC</option>
-              <option value="">FVCOM</option>
-              <option value="">SELFE</option>
-              <option value="">SLOSH</option>
+            <button type="button" class="btn btn-primary btn-filter" data-toggle="button" id="model-filter-btn">Filter by Model</button>
+            <select id="model-list" class="selectpicker">
+              <option value="ADCIRC">ADCIRC</option>
+              <option value="FVCOM">FVCOM</option>
+              <option value="SELFE">SELFE</option>
+              <option value="SLOSH">SLOSH</option>
             </select>
           </div>
           <div id="results">
+            <h4>Query Results</h4>
             <table class="table table-condensed table-bordered">
               <thead>
-                <tr>
-                  <th><input type="checkbox"></th>
+                <tr class="info">
                   <th>Dataset</th>
+                  <th>Add to Map</th>
                 </tr>
               </thead>
             </table>
-            <div id="table-wrapper">
+            <div class="table-wrapper">
               <table class="table table-hover table-condensed table-bordered table-striped">
                 <tbody>
-                  <tr>
-                    <td><input type="checkbox"></td>
-                    <td>dataset</td>
+                  <tr id='row_0'>
+                    <td>dataset_0</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_1'>
+                    <td>dataset_1</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_2'>
+                    <td>dataset_2</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_3'>
+                    <td>dataset_3</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_4'>
+                    <td>dataset_4</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_5'>
+                    <td>dataset_5</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_6'>
+                    <td>dataset_6</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_7'>
+                    <td>dataset_7</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_8'>
+                    <td>dataset_8</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_9'>
+                    <td>dataset_9</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_10'>
+                    <td>dataset_10</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_11'>
+                    <td>dataset_11</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_12'>
+                    <td>dataset_12</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_13'>
+                    <td>dataset_13</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_14'>
+                    <td>dataset_14</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_15'>
+                    <td>dataset_15</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_16'>
+                    <td>dataset_16</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_17'>
+                    <td>dataset_17</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_18'>
+                    <td>dataset_18</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_19'>
+                    <td>dataset_19</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
+                  </tr>
+                  <tr id='row_20'>
+                    <td>dataset_20</td>
+                    <td><span class="glyphicon glyphicon-plus"></span></td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
+          <div id="active-layers">
+            <h4>Active Map Layers</h4>
+            <button class='btn btn-default'>Clear Map</button>
+            <table class="table table-condensed table-bordered">
+              <thead>
+                <tr class="info">
+                  <th>Dataset</th>
+                  <th class='checkbox-cell'>u,v</th>
+                  <th class='checkbox-cell'>ele</th>
+                  <th class='checkbox-cell'>o2</th>
+                </tr>
+              </thead>
+            </table>
+            <div class="table-wrapper">
+              <table class="table table-hover table-condensed table-bordered table-striped">
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        <div class="col-md-7" id="map-col">
+        <div class="col-md-5" id="map-col">
           <div id="map"></div>
             <div class="container-fluid" id="time-slider-wrapper">
               <div id="time-slider-content">
