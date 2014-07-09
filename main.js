@@ -1,4 +1,5 @@
 var map;
+var catalog = [];
 var proj3857 = new OpenLayers.Projection("EPSG:3857");
 var proj4326 = new OpenLayers.Projection("EPSG:4326");
 
@@ -13,7 +14,7 @@ var startDateMil = startDate.getTime(),
     endDate = new Date(endDateMil);
 
 function resize() {
-  var 	mapOffset 	= 90,
+  var 	mapOffset 	= 139,
         tableOffset = 391;
   $('#map').height($(window).height() - mapOffset - 2);
   $('#results .table-wrapper').height($(window).height() - tableOffset);
@@ -79,6 +80,20 @@ $(document).ready(function(){
     ]
     ,center : new OpenLayers.LonLat(-83,28).transform(proj4326,proj3857)
     ,zoom   : 5
+  });
+
+  $.ajax({
+     url : 'http://comt.sura.org:8080/wms/datasets'
+    ,dataType : 'jsonp'
+    ,success : function(r) {
+      _.each(r,function(o) {
+        var d = _.values(o)[0];
+        if (d && d.category) {
+          d.name = o;
+          catalog.push(d);
+        }
+      });
+    }
   });
 
   resize();
