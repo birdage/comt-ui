@@ -118,7 +118,7 @@ $(document).ready(function(){
 
   resize();
   $('.btn-filter').on('click', filter);
-  $('.selectpicker').selectpicker().on('change', filterChange);
+  $('.selectpicker').selectpicker({width:'auto'}).on('change', filterChange);
   $('.btn').button().mouseup(function(){$(this).blur();});
   $('#active-layers button').on('click', clearMap);
   $('div.btn-group.bootstrap-select').css('width', $('ul.dropdown-menu.inner.selectpicker li').css('width'));
