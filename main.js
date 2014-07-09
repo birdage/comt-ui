@@ -1,8 +1,5 @@
 var map;
 var catalog = [];
-var categories = [];
-var storms = [];
-var models = [];
 var proj3857 = new OpenLayers.Projection("EPSG:3857");
 var proj4326 = new OpenLayers.Projection("EPSG:4326");
 
@@ -26,7 +23,7 @@ function resize() {
 
 window.onresize = resize;
 
-function scenarioClick() {
+function categoryClick() {
   alert('button text: ' + $(this).parent().text());
 }
 
@@ -99,18 +96,31 @@ $(document).ready(function(){
           catalog.push(d);
         }
       });
-      categories = _.sortBy(_.uniq(_.pluck(catalog,'category')),function(o){return o.toUpperCase()});
-      storms = _.sortBy(_.uniq(_.pluck(catalog,'storm')),function(o){return o.toUpperCase()});
-      models = _.sortBy(_.uniq(_.pluck(catalog,'org_model')),function(o){return o.toUpperCase()});
+
+      // Populate the options.
+      _.each(_.sortBy(_.uniq(_.pluck(catalog,'category')),function(o){return o.toUpperCase()}),function(o) {
+        $('#categories').append('<label class="btn btn-default"><input type="radio" name="categories" id="' + o + '">' + o + '</label>');
+      });
+
+      _.each(_.sortBy(_.uniq(_.pluck(catalog,'storm')),function(o){return o.toUpperCase()}),function(o) {
+        $('#event-list').append('<option value="' + o + '">' + o + '</option>');
+      });
+       $('#event-list').selectpicker('refresh');
+
+      _.each(_.sortBy(_.uniq(_.pluck(catalog,'org_model')),function(o){return o.toUpperCase()}),function(o) {
+        $('#model-list').append('<option value="' + o + '">' + o + '</option>');
+      });
+      $('#model-list').selectpicker('refresh');
+
+      syncQueryResults();
     }
   });
 
   resize();
-  $('.navbar .btn-group input').on('change', scenarioClick);
+  $('.navbar .btn-group input').on('change', categoryClick);
   $('.btn-filter').on('click', filter);
   $('.selectpicker').selectpicker().on('change', filterChange);
   $('.btn').button().mouseup(function(){$(this).blur();});
-  $('#results .table-wrapper td:nth-child(2)').on('click', addToMap);
   $('#active-layers button').on('click', clearMap);
   $('#time-slider').slider({
     value:  startDateMil,
@@ -126,3 +136,11 @@ $(document).ready(function(){
   $('#time-slider-max').val(endDate.toDateString());
   $('div.btn-group.bootstrap-select').css('width', $('ul.dropdown-menu.inner.selectpicker li').css('width'));
 });
+
+function syncQueryResults() {
+  var i = 0;
+  _.each(_.sortBy(_.pluck(catalog,'name'),function(o){return o.toUpperCase()}),function(o) {
+    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td>' + o + '</td><td><span class="glyphicon glyphicon-plus"></span></td></tr>');
+  });
+  $('#results .table-wrapper td:nth-child(2)').on('click', addToMap);
+}
