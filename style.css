@@ -60,6 +60,14 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 	text-align: center;
 }
 
+#results > div > table {
+	table-layout: fixed;
+}
+
+#results > div > table > tbody > tr > td {
+	overflow-x: hidden;
+}
+
 #results > div > table > tbody > tr > td:nth-child(2) {
 	width: 60px;
 }

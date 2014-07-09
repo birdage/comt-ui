@@ -127,7 +127,7 @@ $(document).ready(function(){
 function syncQueryResults() {
   var i = 0;
   _.each(_.sortBy(_.pluck(catalog,'name'),function(o){return o.toUpperCase()}),function(o) {
-    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td>' + o + '</td><td><span class="glyphicon glyphicon-plus"></span></td></tr>');
+    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o + '">' + o + '</td><td><span class="glyphicon glyphicon-plus"></span></td></tr>');
   });
   $('#results .table-wrapper td:nth-child(2)').on('click', addToMap);
 
