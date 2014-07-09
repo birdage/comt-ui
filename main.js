@@ -13,7 +13,7 @@ var startDateMil = startDate.getTime(),
     endDate = new Date(endDateMil);
 
 function resize() {
-  var 	mapOffset 	= 90,
+  var 	mapOffset 	= 139,
         tableOffset = 391;
   $('#map').height($(window).height() - mapOffset - 2);
   $('#results .table-wrapper').height($(window).height() - tableOffset);
