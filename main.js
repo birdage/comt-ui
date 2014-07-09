@@ -1,3 +1,7 @@
+var map;
+var proj3857 = new OpenLayers.Projection("EPSG:3857");
+var proj4326 = new OpenLayers.Projection("EPSG:4326");
+
 var startDate = new Date(Date.now()),
     endDate,
     hour = 3600000,
@@ -13,6 +17,7 @@ function resize() {
         tableOffset = 391;
   $('#map').height($(window).height() - mapOffset - 2);
   $('#results .table-wrapper').height($(window).height() - tableOffset);
+  map.updateSize();
 }
 
 window.onresize = resize;
@@ -60,6 +65,22 @@ function clearMap() {
 }
 
 $(document).ready(function(){
+  map = new OpenLayers.Map('map',{
+    layers  : [
+      new OpenLayers.Layer.XYZ(
+         'ESRI Ocean'
+        ,'http://services.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/${z}/${y}/${x}.jpg'
+        ,{
+           sphericalMercator : true
+          ,isBaseLayer       : true
+          ,wrapDateLine      : true
+        }
+      )
+    ]
+    ,center : new OpenLayers.LonLat(-83,28).transform(proj4326,proj3857)
+    ,zoom   : 5
+  });
+
   resize();
   $('.navbar .btn-group input').on('change', scenarioClick);
   $('.btn-filter').on('click', filter);
