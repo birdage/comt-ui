@@ -17,14 +17,16 @@ function categoryClick() {
   syncQueryResults();
 }
 
-function filter() {
+function filterToggle() {
   // Give the button time to add its class (which is used for testing in the query).
   setTimeout(function() {
     syncQueryResults();
   },100);
 }
 
-function filterChange() {
+function filterValueSelect() {
+  var id = $(this).attr('id').replace('list','filter-btn');
+  $('#' + id).addClass('active');
   // Give the button time to add its class (which is used for testing in the query).
   setTimeout(function() {
     syncQueryResults();
@@ -115,8 +117,8 @@ $(document).ready(function(){
   });
 
   resize();
-  $('.btn-filter').on('click', filter);
-  $('.selectpicker').selectpicker().on('change', filterChange);
+  $('.btn-filter').on('click', filterToggle);
+  $('.selectpicker').selectpicker({width:'auto'}).on('change', filterValueSelect);
   $('.btn').button().mouseup(function(){$(this).blur();});
   $('#active-layers button').on('click', clearMap);
   $('div.btn-group.bootstrap-select').css('width', $('ul.dropdown-menu.inner.selectpicker li').css('width'));
@@ -132,7 +134,7 @@ function syncQueryResults() {
     return category && event && model;
   });
   _.each(_.sortBy(_.pluck(c,'name'),function(o){return o.toUpperCase()}),function(o) {
-    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td>' + o + '</td><td><span class="glyphicon glyphicon-plus"></span></td></tr>');
+    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o + '">' + o + '</td><td><span class="glyphicon glyphicon-plus"></span></td></tr>');
   });
   $('#results .table-wrapper td:nth-child(2)').on('click', addToMap);
 
