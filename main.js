@@ -3,16 +3,6 @@ var catalog = [];
 var proj3857 = new OpenLayers.Projection("EPSG:3857");
 var proj4326 = new OpenLayers.Projection("EPSG:4326");
 
-var startDate = new Date(Date.now()),
-    endDate,
-    hour = 3600000,
-    day = 86400000;
-
-var startDateMil = startDate.getTime(),
-    endDateMil = startDate.getTime() + 3 * day;
-
-    endDate = new Date(endDateMil);
-
 function resize() {
   var 	mapOffset 	= 139,
         tableOffset = 391;
@@ -91,7 +81,7 @@ $(document).ready(function(){
       // array of objects where the name is one of the attrs.
       _.each(r,function(o) {
         var d = _.values(o)[0];
-        if (d && d.category) {
+        if (d && d.category && !_.isEmpty(d.temporal)) {
           d.name = _.keys(o)[0];
           catalog.push(d);
         }
@@ -112,28 +102,25 @@ $(document).ready(function(){
       });
       $('#model-list').selectpicker('refresh');
 
+      // Pull out the possible layers.
+      var layers = [];
+      _.each(_.pluck(catalog,'layers'),function(o) {
+        layers.push(_.keys(o));
+      });
+      _.each(_.sortBy(_.uniq(_.flatten(layers)),function(o){return o.toUpperCase()}),function(o) {
+        $('#active-map-layers thead tr').append("<th class='checkbox-cell'>" + o + "</th>");
+      });
+
+      $('.navbar .btn-group input').on('change', categoryClick);
       syncQueryResults();
     }
   });
 
   resize();
-  $('.navbar .btn-group input').on('change', categoryClick);
   $('.btn-filter').on('click', filter);
   $('.selectpicker').selectpicker().on('change', filterChange);
   $('.btn').button().mouseup(function(){$(this).blur();});
   $('#active-layers button').on('click', clearMap);
-  $('#time-slider').slider({
-    value:  startDateMil,
-    min: startDateMil,
-    max: endDateMil,
-    step: 6 * hour,
-    formater: function(value) {
-      var dateTime = new Date(value);
-      return dateTime.toString();
-    }
-  });
-  $('#time-slider-min').val(startDate.toDateString());
-  $('#time-slider-max').val(endDate.toDateString());
   $('div.btn-group.bootstrap-select').css('width', $('ul.dropdown-menu.inner.selectpicker li').css('width'));
 });
 
@@ -143,4 +130,40 @@ function syncQueryResults() {
     $('#query-results tbody').append('<tr id="row_' + i++ +'"><td>' + o + '</td><td><span class="glyphicon glyphicon-plus"></span></td></tr>');
   });
   $('#results .table-wrapper td:nth-child(2)').on('click', addToMap);
+
+  var times = _.flatten(_.pluck(catalog,'temporal')).sort();
+  var startDate = isoDateToDate(times[0]);
+  var endDate = isoDateToDate(times.pop());
+  $('#time-slider').slider({
+    value:  startDate.getTime(),
+    min: startDate.getTime(),
+    max: endDate.getTime(),
+    step: 6 * 3600000,
+    formater: function(value) {
+      var dateTime = new Date(value);
+      return dateTime.toString();
+    }
+  });
+  $('#time-slider-min').val(startDate.toDateString());
+  $('#time-slider-max').val(endDate.toDateString());
+}
+
+function isoDateToDate(s) {
+  // 2010-01-01T00:00:00Z
+  s = s.replace("\n",'');
+  var p = s.split('T');
+  if (p.length == 2) {
+    var ymd = p[0].split('-');
+    var hm = p[1].split(':');
+    return new Date(
+       ymd[0]
+      ,ymd[1] - 1
+      ,ymd[2]
+      ,hm[0]
+      ,hm[1]
+    );
+  }
+  else {
+    return false;
+  }
 }
