@@ -1,5 +1,6 @@
 var map;
 var catalog = [];
+var catalogLayers = [];
 var proj3857 = new OpenLayers.Projection("EPSG:3857");
 var proj4326 = new OpenLayers.Projection("EPSG:4326");
 
@@ -34,11 +35,13 @@ function filterValueSelect() {
 }
 
 function addToMap() {
+  var c = catalog[$(this).parent().children('td:first-child').data('idx')];
   var datasetText = $(this).parent().children('td:first-child').text();
-  var rowHtml = '<tr><td>' + datasetText + '<a href="#" title="View Data"><img src="./img/view_data.png" /></a></td>' +
-    '<td class="checkbox-cell"><input type="checkbox" value="uv" /></td>' +
-    '<td class="checkbox-cell"><input type="checkbox" value="ele" /></td>' +
-    '<td class="checkbox-cell"><input type="checkbox" value="o2" /></td></tr>';
+  var rowHtml = '<tr><td>' + datasetText + '<a href="#" title="View Data"><img src="./img/view_data.png" /></a></td>';
+  _.each(catalogLayers,function(o) {
+    var disabled = c.layers[o]? '' : 'disabled';
+    rowHtml += '<td class="checkbox-cell"><input ' + disabled + ' type="checkbox" value="' + o + '" /></td>';
+  });
   $('#active-layers table tbody').append(rowHtml);
   if (hasScrollBar($('#active-layers .table-wrapper')[0]))
     $('#active-layers table thead th:last-child').css('width', '47px');
@@ -79,8 +82,9 @@ $(document).ready(function(){
       // array of objects where the name is one of the attrs.
       _.each(r,function(o) {
         var d = _.values(o)[0];
-        if (d && d.category && !_.isEmpty(d.temporal)) {
+        if (d && d.category && !_.isEmpty(d.layers) && !_.isEmpty(d.temporal)) {
           d.name = _.keys(o)[0];
+          d.idx  = catalog.length;
           catalog.push(d);
         }
       });
@@ -103,12 +107,13 @@ $(document).ready(function(){
       $('#model-list').selectpicker('refresh');
 
       // Pull out the possible layers.
-      var layers = [];
+      var layers  = [];
       _.each(_.pluck(catalog,'layers'),function(o) {
         layers.push(_.keys(o));
       });
       _.each(_.sortBy(_.uniq(_.flatten(layers)),function(o){return o.toUpperCase()}),function(o) {
         $('#active-map-layers thead tr').append("<th class='checkbox-cell'>" + o + "</th>");
+        catalogLayers.push(o);
       });
 
       $('.navbar .btn-group input').on('change', categoryClick);
@@ -133,8 +138,8 @@ function syncQueryResults() {
     var model = !$('#model-filter-btn').hasClass('active') || o.org_model == $('#model-list option:selected').val();
     return category && event && model;
   });
-  _.each(_.sortBy(_.pluck(c,'name'),function(o){return o.toUpperCase()}),function(o) {
-    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o + '">' + o + '</td><td><span class="glyphicon glyphicon-plus"></span></td></tr>');
+  _.each(_.sortBy(c,function(o){return o.name.toUpperCase()}),function(o) {
+    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '">' + o.name + '</td><td><span class="glyphicon glyphicon-plus"></span></td></tr>');
   });
   $('#results .table-wrapper td:nth-child(2)').on('click', addToMap);
 
