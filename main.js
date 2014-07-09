@@ -14,25 +14,21 @@ function resize() {
 window.onresize = resize;
 
 function categoryClick() {
-  alert('button text: ' + $(this).parent().text());
+  syncQueryResults();
 }
 
 function filter() {
-  var enabled = false;
-  var buttonText = $(this).text();
-  if (!$(this).hasClass('active'))
-    enabled = true;
-  alert(buttonText + ' : ' + enabled);
+  // Give the button time to add its class (which is used for testing in the query).
+  setTimeout(function() {
+    syncQueryResults();
+  },100);
 }
 
 function filterChange() {
-  var listId = $(this).attr('id');
-  var value = '';
-  if (listId == 'event-list')
-    value = $($('select option:selected')[0]).val();
-  else
-    value = $($('select option:selected')[1]).val();
-  alert(listId + ' value: ' + value);
+  // Give the button time to add its class (which is used for testing in the query).
+  setTimeout(function() {
+    syncQueryResults();
+  },100);
 }
 
 function addToMap() {
@@ -88,8 +84,10 @@ $(document).ready(function(){
       });
 
       // Populate the options.
+      var i = 0;
       _.each(_.sortBy(_.uniq(_.pluck(catalog,'category')),function(o){return o.toUpperCase()}),function(o) {
-        $('#categories').append('<label class="btn btn-default"><input type="radio" name="categories" id="' + o + '">' + o + '</label>');
+        $('#categories').append('<label class="btn btn-default ' + (i == 0 ? 'active' : '') + '"><input type="radio" name="categories" id="' + o + '" ' + (i == 0 ? 'checked' : '') + '>' + o + '</label>');
+        i++;
       });
 
       _.each(_.sortBy(_.uniq(_.pluck(catalog,'storm')),function(o){return o.toUpperCase()}),function(o) {
@@ -125,8 +123,15 @@ $(document).ready(function(){
 });
 
 function syncQueryResults() {
+  $('#query-results tbody').empty();
   var i = 0;
-  _.each(_.sortBy(_.pluck(catalog,'name'),function(o){return o.toUpperCase()}),function(o) {
+  var c = catalog.filter(function(o) {
+    var category = o.category == $('.navbar .btn-group input:checked').attr('id');
+    var event = !$('#event-filter-btn').hasClass('active') || o.storm == $('#event-list option:selected').val();
+    var model = !$('#model-filter-btn').hasClass('active') || o.org_model == $('#model-list option:selected').val();
+    return category && event && model;
+  });
+  _.each(_.sortBy(_.pluck(c,'name'),function(o){return o.toUpperCase()}),function(o) {
     $('#query-results tbody').append('<tr id="row_' + i++ +'"><td>' + o + '</td><td><span class="glyphicon glyphicon-plus"></span></td></tr>');
   });
   $('#results .table-wrapper td:nth-child(2)').on('click', addToMap);
