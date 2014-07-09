@@ -1,5 +1,8 @@
 var map;
 var catalog = [];
+var categories = [];
+var storms = [];
+var models = [];
 var proj3857 = new OpenLayers.Projection("EPSG:3857");
 var proj4326 = new OpenLayers.Projection("EPSG:4326");
 
@@ -86,13 +89,19 @@ $(document).ready(function(){
      url : 'http://comt.sura.org:8080/wms/datasets'
     ,dataType : 'jsonp'
     ,success : function(r) {
+      // The catalog comes in as an array w/ each element containing one key (name) that points
+      // to the payload.  Reduce the complexity by one and simply pump the catalog into an
+      // array of objects where the name is one of the attrs.
       _.each(r,function(o) {
         var d = _.values(o)[0];
         if (d && d.category) {
-          d.name = o;
+          d.name = _.keys(o)[0];
           catalog.push(d);
         }
       });
+      categories = _.sortBy(_.uniq(_.pluck(catalog,'category')),function(o){return o.toUpperCase()});
+      storms = _.sortBy(_.uniq(_.pluck(catalog,'storm')),function(o){return o.toUpperCase()});
+      models = _.sortBy(_.uniq(_.pluck(catalog,'org_model')),function(o){return o.toUpperCase()});
     }
   });
 
