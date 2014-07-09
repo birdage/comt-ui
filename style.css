@@ -22,12 +22,8 @@ body{
 	margin-right	: 15px;
 }
 
-#event-filter-btn {
-	margin-left: -91px;
-}
-
 #model-filter-btn {
-	margin-left: 250px;
+	margin-left: 80px;
 }
 
 #filters .btn-group.bootstrap-select {
