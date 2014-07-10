@@ -143,21 +143,23 @@ function syncQueryResults() {
   });
   $('#results .table-wrapper td:nth-child(2)').on('click', addToMap);
 
-  var times = _.flatten(_.pluck(catalog,'temporal')).sort();
-  var startDate = isoDateToDate(times[0]);
-  var endDate = isoDateToDate(times.pop());
-  $('#time-slider').slider({
-    value:  startDate.getTime(),
-    min: startDate.getTime(),
-    max: endDate.getTime(),
-    step: 6 * 3600000,
-    formater: function(value) {
-      var dateTime = new Date(value);
-      return dateTime.toString();
-    }
-  });
-  $('#time-slider-min').val(startDate.toDateString());
-  $('#time-slider-max').val(endDate.toDateString());
+  var times = _.flatten(_.pluck(c,'temporal')).sort();
+  if (times.length > 1) {
+    var startDate = isoDateToDate(times[0]);
+    var endDate = isoDateToDate(times.pop());
+    $('#time-slider').slider({
+      value:  startDate.getTime(),
+      min: startDate.getTime(),
+      max: endDate.getTime(),
+      step: 6 * 3600000,
+      formater: function(value) {
+        var dateTime = new Date(value);
+        return dateTime.toString();
+      },
+    });
+    $('#time-slider-min').val(startDate.toDateString());
+    $('#time-slider-max').val(endDate.toDateString());
+  }
 }
 
 function isoDateToDate(s) {
