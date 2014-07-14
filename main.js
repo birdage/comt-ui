@@ -190,7 +190,7 @@ function syncQueryResults() {
     $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="title">' + o.name + '</div>' + l + '</td></tr>');
     //<td><span class="glyphicon glyphicon-plus"></span></td>');
   });
-  $('#results .table-wrapper td:nth-child(2)').on('click', addToMap);
+  $('#results .table-wrapper td').on('click', addToMap);
 
   $('ul.nav li:first-child a').on('click', function(e){
     e.preventDefault();
