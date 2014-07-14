@@ -85,12 +85,7 @@ ul.nav li:last-child.active a {
 	text-align: center;
 }
 
-#filters button.btn-primary {
-	width 			: 130px;
-	margin-right	: 15px;
-}
-
-#model-filter-btn {
+#filters .label-primary:last-of-type {
 	margin-left: 80px;
 }
 
@@ -129,13 +124,15 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 }
 
 #results > div > table > tbody > tr > td {
-	overflow-x: hidden;
+	overflow-x		: hidden;
 	background-color: #ededed;
-			background-image: -webkit-linear-gradient(top, #fff, #ededed);
-			background-image:    -moz-linear-gradient(top, #fff, #ededed);
-			background-image:     -ms-linear-gradient(top, #fff, #ededed);
-			background-image:      -o-linear-gradient(top, #fff, #ededed);
-			background-image:         linear-gradient(to bottom, #fff, #ededed);
+	background-image: -webkit-linear-gradient(top, #fff, #ededed);
+	background-image:    -moz-linear-gradient(top, #fff, #ededed);
+	background-image:     -ms-linear-gradient(top, #fff, #ededed);
+	background-image:      -o-linear-gradient(top, #fff, #ededed);
+	background-image:         linear-gradient(to bottom, #fff, #ededed);
+	cursor 			: pointer;
+
 }
 
 #results > div > table > tbody > tr > td:hover {
