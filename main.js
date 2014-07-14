@@ -37,22 +37,22 @@ function filterValueSelect() {
 function addToMap() {
   var c = catalog[$(this).parent().children('td:first-child').data('idx')];
   var lc = 0;
-  _.each(_.keys(c.layers).sort(),function(o) {
-    if (_.isEmpty(map.getLayersByName(c.name + '-' + o))) {
-      if (!mapDate) {
-        mapDate = isoDateToDate(c.temporal[0]);
-      }
-      addWMS({
-         name   : c.name
-        ,url    : c.url
-        ,layers : o
-        ,styles : c.layers[o]
-        ,times  : c.temporal
-        ,bbox   : new OpenLayers.Bounds(c.spatial).transform(proj4326,proj3857)
-      });
-      lc++;
+  // Map only the default_layer.  If none, map the 1st in the layers attr.
+  var lyrName = _.keys(c.layers).concat(c.default_layer).pop();
+  if (_.isEmpty(map.getLayersByName(c.name + '-' + lyrName))) {
+    if (!mapDate) {
+      mapDate = isoDateToDate(c.temporal[0]);
     }
-  });
+    addWMS({
+       name   : c.name
+      ,url    : c.url
+      ,layers : lyrName
+      ,styles : c.layers[lyrName]
+      ,times  : c.temporal
+      ,bbox   : new OpenLayers.Bounds(c.spatial).transform(proj4326,proj3857)
+    });
+    lc++;
+  }
 
   if (lc > 0) {
     var times = c.temporal;
@@ -72,7 +72,7 @@ function addToMap() {
       $('#time-slider-max').val(endDate.toDateString());
     }
 
-    var datasetText = $(this).parent().children('td:first-child').text();
+    var datasetText = $(this).parent().children('td:first-child').text().replace(lyrName,'<b>' + lyrName + '</b>');
     var rowHtml = '<tr><td>' + datasetText + '<a href="#" title="View Data" data-group="' + c.name + '"><img src="./img/view_data.png" /></a></td>';
     rowHtml += '<td class="checkbox-cell"><input type="checkbox" checked value="' + c.name + '" /></td>';
     $('#active-layers table tbody').append(rowHtml);
@@ -186,6 +186,7 @@ function syncQueryResults() {
   });
   _.each(_.sortBy(c,function(o){return o.name.toUpperCase()}),function(o) {
     var l = ' (' + _.keys(o.layers).sort().join(', ') + ')';
+    l = l.replace(o.default_layer,'<b>' + o.default_layer + '</b>');
     $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '">' + o.name + l + '</td><td><span class="glyphicon glyphicon-plus"></span></td></tr>');
   });
   $('#results .table-wrapper td:nth-child(2)').on('click', addToMap);
