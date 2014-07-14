@@ -116,14 +116,21 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 
 .table-wrapper {
 	overflow-y	: auto;
+	overflow-x	: hidden;
 }
 
-#results > div > table {
+#results > div > table,
+#active-layers > div > table {
 	table-layout: fixed;
 	border-top 	: none;
 }
 
 #results > div > table > tbody > tr > td {
+	cursor: pointer;
+}
+
+#results > div > table > tbody > tr > td,
+#active-layers > div > table > tbody > tr > td {
 	overflow-x		: hidden;
 	background-color: #ededed;
 	background-image: -webkit-linear-gradient(top, #fff, #ededed);
@@ -131,7 +138,6 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 	background-image:     -ms-linear-gradient(top, #fff, #ededed);
 	background-image:      -o-linear-gradient(top, #fff, #ededed);
 	background-image:         linear-gradient(to bottom, #fff, #ededed);
-	cursor 			: pointer;
 
 }
 
@@ -155,6 +161,10 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 	margin-top: 25px;
 }
 
+#active-layers table tbody tr td div {
+	overflow-x: hidden;
+}
+
 #active-layers table tbody tr td a {
 	float: right;
 }
@@ -162,10 +172,6 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 #active-layers button {
 	float		: right;
 	margin-top	: -37px;
-}
-
-#active-layers .table-wrapper {
-	max-height: 96px;
 }
 
 .table-wrapper {
@@ -189,7 +195,7 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 }
 
 .checkbox-cell {
-	width		: 30px;
+	width		: 37px;
 	text-align	: center;
 }
 

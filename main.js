@@ -5,10 +5,18 @@ var proj3857 = new OpenLayers.Projection("EPSG:3857");
 var proj4326 = new OpenLayers.Projection("EPSG:4326");
 
 function resize() {
-  var 	mapOffset 	= 101,
-        tableOffset = 229;
-  $('#map').height($(window).height() - mapOffset - 2);
-  $('#results .table-wrapper').height($(window).height() - tableOffset);
+  var 	mapOffset 	= 103,
+        resultsTableOffset = 229,
+        activeMapLayersTableOffset = 170;
+  $('#map').height($(window).height() - mapOffset);
+  $('#results .table-wrapper').height($(window).height() - resultsTableOffset);
+  $('#active-layers .table-wrapper').height($(window).height() - activeMapLayersTableOffset);
+  if (hasScrollBar($('#active-layers .table-wrapper')[0]))
+    $('#active-layers table tbody td:last-child').css('width', '37px');
+  else {
+    $('#active-layers table tbody td:last-child').css('width', '54px');
+    $('#active-layers .table-wrapper').css('height', 'auto');
+  }
   map.updateSize();
 }
 
@@ -73,7 +81,7 @@ function addToMap() {
     }
 
     var datasetText = $(this).parent().children('td:first-child').text().replace(lyrName,'<b>' + lyrName + '</b>');
-    var rowHtml = '<tr><td>' + datasetText + '<a href="#" title="View Data" data-group="' + c.name + '"><img src="./img/view_data.png" /></a></td>';
+    var rowHtml = '<tr><td title="' + datasetText.substr(0, datasetText.indexOf("(")) + '"><div>' + datasetText + '<a href="#" title="View Data" data-group="' + c.name + '"><img src="./img/view_data.png" /></a></div></td>';
     rowHtml += '<td class="checkbox-cell"><input type="checkbox" checked value="' + c.name + '" /></td>';
     $('#active-layers table tbody').append(rowHtml);
     $('#active-layers input:checkbox').off('click');
