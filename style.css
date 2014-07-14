@@ -1,16 +1,84 @@
 body{
-	padding-top : 70px;
-	overflow-x  : hidden;
-	overflow-y 	: hidden;
-	font-size: 12px;
+	padding-top 	: 70px;
+	overflow-x  	: hidden;
+	overflow-y 		: hidden;
+	font-size 		: 12px;
+	background-color: #fff;
+	background-image: -webkit-linear-gradient(left, #fff, #85c1de);
+	background-image:    -moz-linear-gradient(left, #fff, #85c1de);
+	background-image:     -ms-linear-gradient(left, #fff, #85c1de);
+	background-image:      -o-linear-gradient(left, #fff, #85c1de);
+	background-image:         linear-gradient(left, #fff, #85c1de);
 }
 
 .btn {
 	font-size: 12px;
 }
 
+a {outline: 0!important;}
+
+.navbar {
+	background-color: #eee;
+	background-image: -webkit-linear-gradient(top, #fff, #eee);
+	background-image:    -moz-linear-gradient(top, #fff, #eee);
+	background-image:     -ms-linear-gradient(top, #fff, #eee);
+	background-image:      -o-linear-gradient(top, #fff, #eee);
+	background-image:         linear-gradient(to bottom, #fff, #eee);
+	height: 62px;
+	border-bottom: 1px solid #bdbcbd !important;
+}
+
+.navbar-brand img {
+	width		: 200px;
+	margin-left : 15px;
+	margin-top	: -4px;
+}
+
+ul.nav {
+	padding-top: 9px;
+}
+
+ul.nav li {
+	width: 158px;
+	height: 59px;
+	text-indent: -99999px;
+	margin-right: 5px;
+}
+
+ul.nav > li > a {
+	padding-top:29px;
+}
+
+ul.nav > li > a:hover, ul.nav > li.active > a:hover, ul.nav > li > a:focus {
+	background-color: transparent!important;
+}
+
 .navbar > .container-fluid > .navbar-collapse > .btn-group {
 	margin-top: 8px;
+}
+
+ul.nav li:first-child a {
+	background: url('img/grey_catalogue_tab.png') no-repeat;
+}
+
+ul.nav li:last-child a {
+	background: url('img/grey_map_view_tab.png') no-repeat;
+}
+
+ul.nav li:first-child.active a {
+	background: url('img/blue_catalogue_tab.png') no-repeat;
+}
+
+ul.nav li:last-child.active a {
+	background: url('img/blue_map_view_tab.png') no-repeat;
+}
+
+.col-md-7 {
+	text-align: center;
+}
+
+#categories {
+	margin: 15px 0;
 }
 
 #filters {
@@ -39,42 +107,51 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 }
 
 #results {
-	margin-top: 30px;
+	margin-top: 20px;
 }
 
-#results h4,
-#active-layers h4 {
+#results h4 {
 	text-align: center;
 }
 
 .table {
 	margin-bottom: 0;
+	text-align: left;
 }
 
 .table-wrapper {
 	overflow-y	: auto;
 }
 
-#results > table > thead > tr > th:nth-child(2) {
-	width: 77px;
-	text-align: center;
-}
-
 #results > div > table {
 	table-layout: fixed;
+	border-top 	: none;
 }
 
 #results > div > table > tbody > tr > td {
 	overflow-x: hidden;
+	background-color: #ededed;
+			background-image: -webkit-linear-gradient(top, #fff, #ededed);
+			background-image:    -moz-linear-gradient(top, #fff, #ededed);
+			background-image:     -ms-linear-gradient(top, #fff, #ededed);
+			background-image:      -o-linear-gradient(top, #fff, #ededed);
+			background-image:         linear-gradient(to bottom, #fff, #ededed);
 }
 
-#results > div > table > tbody > tr > td:nth-child(2) {
-	width: 60px;
+#results > div > table > tbody > tr > td:hover {
+	background-color: #d0dce2;
+	background-image: -webkit-linear-gradient(top, #e6f2f8, #d0dce2);
+	background-image:    -moz-linear-gradient(top, #e6f2f8, #d0dce2);
+	background-image:     -ms-linear-gradient(top, #e6f2f8, #d0dce2);
+	background-image:      -o-linear-gradient(top, #e6f2f8, #d0dce2);
+	background-image:         linear-gradient(to bottom, #e6f2f8, #d0dce2);
 }
 
-#results > div > table > tbody > tr > td:nth-child(2) {
-	cursor: pointer;
-	text-align: center;
+#results > div > table > tbody > tr > td > div.title {
+	font-size		: 18px;
+	color 			: #0b83be;
+	padding-bottom	: 10px;
+
 }
 
 #active-layers {
@@ -95,8 +172,9 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 }
 
 .table-wrapper {
-	border-bottom: 1px solid #ddd;
-	border-right: 1px solid #ddd;
+	border-bottom 	: 1px solid #ddd;
+	border-right	: 1px solid #ddd;
+	border-top		: 1px solid #ddd;
 }
 
 .table-wrapper table,
@@ -109,7 +187,6 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 	border-bottom: none;
 }
 
-.table-wrapper table,
 .table-wrapper table tbody tr:first-child td {
 	border-top: none;
 }
@@ -122,6 +199,14 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 #map {
 	border: 1px solid #edece8;
 	height: 100%;
+}
+
+#map-col {
+	margin-top: 15px;
+}
+
+#map-view-col {
+	display: none;
 }
 
 .slider {

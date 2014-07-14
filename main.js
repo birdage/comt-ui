@@ -5,8 +5,8 @@ var proj3857 = new OpenLayers.Projection("EPSG:3857");
 var proj4326 = new OpenLayers.Projection("EPSG:4326");
 
 function resize() {
-  var 	mapOffset 	= 139,
-        tableOffset = 391;
+  var 	mapOffset 	= 101,
+        tableOffset = 229;
   $('#map').height($(window).height() - mapOffset - 2);
   $('#results .table-wrapper').height($(window).height() - tableOffset);
   map.updateSize();
@@ -150,7 +150,7 @@ $(document).ready(function(){
       });
       $('#model-list').selectpicker('refresh');
 
-      $('.navbar .btn-group input').on('change', categoryClick);
+      $('#categories.btn-group input').on('change', categoryClick);
       syncQueryResults();
     }
   });
@@ -179,7 +179,7 @@ function syncQueryResults() {
   $('#query-results tbody').empty();
   var i = 0;
   var c = catalog.filter(function(o) {
-    var category = o.category == $('.navbar .btn-group input:checked').attr('id');
+    var category = o.category == $('#categories.btn-group input:checked').attr('id');
     var event = !$('#event-filter-btn').hasClass('active') || o.storm == $('#event-list option:selected').val();
     var model = !$('#model-filter-btn').hasClass('active') || o.org_model == $('#model-list option:selected').val();
     return category && event && model;
@@ -187,9 +187,38 @@ function syncQueryResults() {
   _.each(_.sortBy(c,function(o){return o.name.toUpperCase()}),function(o) {
     var l = ' (' + _.keys(o.layers).sort().join(', ') + ')';
     l = l.replace(o.default_layer,'<b>' + o.default_layer + '</b>');
-    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '">' + o.name + l + '</td><td><span class="glyphicon glyphicon-plus"></span></td></tr>');
+    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="title">' + o.name + '</div>' + l + '</td></tr>');
+    //<td><span class="glyphicon glyphicon-plus"></span></td>');
   });
   $('#results .table-wrapper td:nth-child(2)').on('click', addToMap);
+
+  $('ul.nav li:first-child a').on('click', function(e){
+    e.preventDefault();
+    if ($(this).hasClass('active'))
+      return false;
+    else {
+      $('#mapView, #map-view-col').hide();
+      $('#map, #catalogue').show();
+      $('#map-col').removeClass('col-md-9').addClass('col-md-5');
+      $('li.active').removeClass('active');
+      $(this).parent().addClass('active');
+      resize();
+    }
+  });
+
+  $('ul.nav li:last-child a').on('click', function(e){
+    e.preventDefault();
+    if ($(this).hasClass('active'))
+      return false;
+    else {
+      $('#map, #catalogue').hide();
+      $('#mapView, #map-view-col').show();
+      $('#map-col').removeClass('col-md-5').addClass('col-md-9');
+      $('li.active').removeClass('active');
+      $(this).parent().addClass('active');
+      resize();
+    }
+  });
 }
 
 function isoDateToDate(s) {
