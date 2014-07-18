@@ -8,7 +8,8 @@ function resize() {
   var 	mapOffset 	= 103,
         resultsTableOffset = 229,
         activeMapLayersTableOffset = 170;
-  $('#mapView').height($(window).height() - mapOffset);
+	sliderOffset = 50;
+  $('#mapView').height($(window).height() - mapOffset - sliderOffset);
   $('#results .table-wrapper').height($(window).height() - resultsTableOffset);
   $('#active-layers .table-wrapper').height($(window).height() - activeMapLayersTableOffset);
   if (hasScrollBar($('#active-layers .table-wrapper')[0]))
