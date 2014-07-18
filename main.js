@@ -37,21 +37,20 @@ function filterValueSelect() {
 }
 
 function addToMap() {
-  var c = catalog[$(this).parent().children('td:first-child').data('idx')];
+  var c = catalog[$(this).parent().parent().children('td:first-child').data('idx')];
+  var lyrName = $(this).data('name');
   var lc = 0;
-  // Map only the default_layer.  If none, map the 1st in the layers attr.
-  var lyrName = _.keys(c.layers).concat(c.default_layer).pop();
   if (_.isEmpty(map.getLayersByName(c.name + '-' + lyrName))) {
     if (!mapDate) {
       mapDate = isoDateToDate(c.temporal[0]);
     }
-    addWMS({
-       name   : c.name
+    lyrName = addWMS({
+       group  : c.name
       ,url    : c.url
       ,layers : lyrName
       ,styles : c.layers[lyrName]
       ,times  : c.temporal
-      ,bbox   : new OpenLayers.Bounds(c.spatial[1],c.spatial[0],c.spatial[3],c.spatial[2]).transform(proj4326,proj3857)
+      ,bbox   : new OpenLayers.Bounds(c.spatial).transform(proj4326,proj3857)
     });
     lc++;
   }
@@ -59,15 +58,12 @@ function addToMap() {
   if (lc > 0) {
     $('ul.nav li:last-child a').trigger('click');
     var times = c.temporal;
-    $.each($('#active-layers table tbody tr input:checkbox'),function() {
-      var name = $(this).val();
-      _.each(_.filter(map.layers,function(o){return o.group == name}),function(o) {
-        times = times.concat(o.times);
-      });
+    $.each($('#active-layers table tbody tr td:first-child'),function() {
+      times = times.concat(map.getLayersByName($(this).text())[0].times);
     });
     if (times.length > 1) {
       var startDate = isoDateToDate(times[0]);
-      var endDate = isoDateToDate(times.pop());
+      var endDate = isoDateToDate(times[times.length - 1]);
       $('#time-slider').data('slider').min = startDate.getTime();
       $('#time-slider').data('slider').max = endDate.getTime();
       $('#time-slider').slider('setValue',mapDate.getTime());
@@ -75,9 +71,8 @@ function addToMap() {
       $('#time-slider-max').val(endDate.toDateString());
     }
 
-    var datasetText = $(this).parent().children('td:first-child').text().replace(lyrName,'<b>' + lyrName + '</b>');
-    var rowHtml = '<tr><td title="' + datasetText.substr(0, datasetText.indexOf("(")) + '"><div>' + datasetText + '<a href="#" title="View Data" data-group="' + c.name + '"><img src="./img/view_data.png" /></a></div></td>';
-    rowHtml += '<td class="checkbox-cell"><input type="checkbox" checked value="' + c.name + '" /></td>';
+    var rowHtml = '<tr><td title="' + lyrName + '"><div>' + lyrName + '<a href="#" title="View Data" data-name="' + lyrName + '"><img src="./img/view_data.png" /></a></div></td>';
+    rowHtml += '<td class="checkbox-cell"><input type="checkbox" checked value="' + lyrName + '" /></td>';
     $('#active-layers table tbody').append(rowHtml);
     $('#active-layers input:checkbox').off('click');
     $('#active-layers input:checkbox').click(function() { 
@@ -85,7 +80,7 @@ function addToMap() {
     });
     $('#active-layers a').off('click');
     $('#active-layers a').click(function() {
-      zoomToLayer(($(this).data('group')));
+      zoomToLayer(($(this).data('name')));
     });
     if (hasScrollBar($('#active-layers .table-wrapper')[0])) {
       $('#active-layers table thead th:last-child').css('width', '47px');
@@ -187,12 +182,13 @@ function syncQueryResults() {
     return category && event && model;
   });
   _.each(_.sortBy(c,function(o){return o.name.toUpperCase()}),function(o) {
-    var l = ' (' + _.keys(o.layers).sort().join(', ') + ')';
-    l = l.replace(o.default_layer,'<b>' + o.default_layer + '</b>');
-    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="title">' + o.name + '</div>' + l + '</td></tr>');
-    //<td><span class="glyphicon glyphicon-plus"></span></td>');
+    var layers = [];
+    _.each(_.keys(o.layers).sort(),function(l) {
+      layers.push('<a href="#" data-name="' + l + '">' + l + '</a>');
+    });
+    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="title">' + o.name + '</div>' + layers.join(', ') + '</td></tr>');
   });
-  $('#results .table-wrapper td').on('click', addToMap);
+  $('#results .table-wrapper td a').on('click', addToMap);
 
   $('ul.nav li:first-child a').on('click', function(e){
     e.preventDefault();
@@ -243,8 +239,8 @@ function isoDateToDate(s) {
 
 function addWMS(d) {
   var lyr = new OpenLayers.Layer.WMS(
-     d.name + '-' + d.layers
-    ,'http://comt.sura.org:8080/wms/datasets/' + d.name + '/'
+     d.group + '-' + d.layers
+    ,'http://comt.sura.org:8080/wms/datasets/' + d.group + '/'
     ,{
        layers      : d.layers
       ,transparent : true
@@ -259,61 +255,45 @@ function addWMS(d) {
       ,visibility       : true
       ,opacity          : 1
       ,noMagic          : true
-      // ,transitionEffect : 'resize'
+      ,transitionEffect : 'resize'
       ,time             : mapDate.format('yyyy-mm-dd"T"HH:00:00')
     }
   );
-  lyr.group = d.name;
+  lyr.group = d.group;
   lyr.times = d.times;
   lyr.bbox  = d.bbox;
   map.zoomToExtent(d.bbox);
 
   lyr.events.register('loadstart',this,function(e) {
-    e.object.loaded = false;
-    $('#active-layers a[data-group="' + e.object.group + '"] img').attr('src','./img/loading.gif');
+    $('#active-layers a[data-name="' + e.object.name + '"] img').attr('src','./img/loading.gif');
   });
   lyr.events.register('loadend',this,function(e) {
-    e.object.loaded = true;
-    var loading = 0;
-    _.each(_.filter(map.layers,function(o){return e.object.group == name}),function(o) {
-      if (!e.object.loaded) {
-        loading++;
-      }
-    });
-    if (loading == 0) {
-      $('#active-layers a[data-group="' + e.object.group + '"] img').attr('src','./img/view_data.png');
-    }
+    $('#active-layers a[data-name="' + e.object.name + '"] img').attr('src','./img/view_data.png');
   });
   map.addLayer(lyr);
+  return lyr.name;
 }
 
 function toggleLayerVisibility(name) {
-  _.each(_.filter(map.layers,function(o){return o.group == name}),function(o) {
-    o.setVisibility(!o.visibility);
-  });
+  var lyr = map.getLayersByName(name)[0];
+  lyr.setVisibility(!lyr.visibility);
 }
 
-function zoomToLayer(group) {
-  map.zoomToExtent(_.find(map.layers,function(o){return o.group == group}).bbox);
+function zoomToLayer(name) {
+  map.zoomToExtent(map.getLayersByName(name)[0].bbox);
 }
 
 function setDate(dt) {
   mapDate = dt;
-  $.each($('#active-layers table tbody tr input:checkbox'),function() {
-    var name = $(this).val();
-    _.each(_.filter(map.layers,function(o){return o.group == name}),function(o) {
-      o.mergeNewParams({TIME : mapDate.format('yyyy-mm-dd"T"HH:00:00')});
-    });
+  $.each($('#active-layers table tbody tr td:first-child'),function() {
+    map.getLayersByName($(this).text())[0].mergeNewParams({TIME : mapDate.format('yyyy-mm-dd"T"HH:00:00')});
   });
 
 }
 
 function clearMap() {
-  $.each($('#active-layers table tbody tr input:checkbox'),function() {
-    var name = $(this).val();
-    _.each(_.filter(map.layers,function(o){return o.group == name}),function(o) {
-      map.removeLayer(o);
-    });
+  $.each($('#active-layers table tbody tr td:first-child'),function() {
+    map.removeLayer(map.getLayersByName($(this).text())[0]);
   });
   $('#active-layers table tbody tr').remove();
   $('#active-layers table thead th:last-child').css('width', '30px');
