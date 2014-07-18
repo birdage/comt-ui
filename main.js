@@ -8,7 +8,7 @@ function resize() {
   var 	mapOffset 	= 103,
         resultsTableOffset = 229,
         activeMapLayersTableOffset = 170;
-  $('#map').height($(window).height() - mapOffset);
+  $('#mapView').height($(window).height() - mapOffset);
   $('#results .table-wrapper').height($(window).height() - resultsTableOffset);
   $('#active-layers .table-wrapper').height($(window).height() - activeMapLayersTableOffset);
   if (hasScrollBar($('#active-layers .table-wrapper')[0]))
@@ -24,13 +24,6 @@ window.onresize = resize;
 
 function categoryClick() {
   syncQueryResults();
-}
-
-function filterToggle() {
-  // Give the button time to add its class (which is used for testing in the query).
-  setTimeout(function() {
-    syncQueryResults();
-  },100);
 }
 
 function filterValueSelect() {
@@ -57,12 +50,13 @@ function addToMap() {
       ,layers : lyrName
       ,styles : c.layers[lyrName]
       ,times  : c.temporal
-      ,bbox   : new OpenLayers.Bounds(c.spatial).transform(proj4326,proj3857)
+      ,bbox   : new OpenLayers.Bounds(c.spatial[1],c.spatial[0],c.spatial[3],c.spatial[2]).transform(proj4326,proj3857)
     });
     lc++;
   }
 
   if (lc > 0) {
+    $('ul.nav li:last-child a').trigger('click');
     var times = c.temporal;
     $.each($('#active-layers table tbody tr input:checkbox'),function() {
       var name = $(this).val();
@@ -90,7 +84,7 @@ function addToMap() {
     });
     $('#active-layers a').off('click');
     $('#active-layers a').click(function() {
-      zoomToLayer(($(this).data('name')));
+      zoomToLayer(($(this).data('group')));
     });
     if (hasScrollBar($('#active-layers .table-wrapper')[0])) {
       $('#active-layers table thead th:last-child').css('width', '47px');
@@ -109,7 +103,7 @@ function hasScrollBar(div) {
 }
 
 $(document).ready(function(){
-  map = new OpenLayers.Map('map',{
+  map = new OpenLayers.Map('mapView',{
     layers  : [
       new OpenLayers.Layer.XYZ(
          'ESRI Ocean'
@@ -176,7 +170,6 @@ $(document).ready(function(){
 
 
   resize();
-  $('.btn-filter').on('click', filterToggle);
   $('.selectpicker').selectpicker({width:'auto'}).on('change', filterValueSelect);
   $('.btn').button().mouseup(function(){$(this).blur();});
   $('#active-layers button').on('click', clearMap);
@@ -188,8 +181,8 @@ function syncQueryResults() {
   var i = 0;
   var c = catalog.filter(function(o) {
     var category = o.category == $('#categories.btn-group input:checked').attr('id');
-    var event = !$('#event-filter-btn').hasClass('active') || o.storm == $('#event-list option:selected').val();
-    var model = !$('#model-filter-btn').hasClass('active') || o.org_model == $('#model-list option:selected').val();
+    var event = $('#event-list option:selected').val() == 'ALL' || $('#event-list option:selected').val() == o.storm;
+    var model = $('#model-list option:selected').val() == 'ALL' || $('#model-list option:selected').val() == o.org_model;
     return category && event && model;
   });
   _.each(_.sortBy(c,function(o){return o.name.toUpperCase()}),function(o) {
@@ -205,9 +198,8 @@ function syncQueryResults() {
     if ($(this).hasClass('active'))
       return false;
     else {
-      $('#mapView, #map-view-col').hide();
-      $('#map, #catalogue').show();
-      $('#map-col').removeClass('col-md-9').addClass('col-md-5');
+      $('#mapView, #map-view-col, #map-col').hide();
+      $('#catalogue').show();
       $('li.active').removeClass('active');
       $(this).parent().addClass('active');
       resize();
@@ -219,9 +211,8 @@ function syncQueryResults() {
     if ($(this).hasClass('active'))
       return false;
     else {
-      $('#map, #catalogue').hide();
-      $('#mapView, #map-view-col').show();
-      $('#map-col').removeClass('col-md-5').addClass('col-md-9');
+      $('#catalogue').hide();
+      $('#mapView, #map-view-col, #map-col').show();
       $('li.active').removeClass('active');
       $(this).parent().addClass('active');
       resize();
@@ -284,7 +275,7 @@ function addWMS(d) {
     e.object.loaded = true;
     var loading = 0;
     _.each(_.filter(map.layers,function(o){return e.object.group == name}),function(o) {
-      if (!e.oejct.loaded) {
+      if (!e.object.loaded) {
         loading++;
       }
     });
@@ -301,8 +292,8 @@ function toggleLayerVisibility(name) {
   });
 }
 
-function zoomToLayer(name) {
-  map.zoomToExtent(_.find(map.layers,function(o){return o.group == name}).bbox);
+function zoomToLayer(group) {
+  map.zoomToExtent(_.find(map.layers,function(o){return o.group == group}).bbox);
 }
 
 function setDate(dt) {

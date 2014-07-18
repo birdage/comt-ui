@@ -49,14 +49,16 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-7" id="catalogue">
+        <div class="col-md-12" id="catalogue">
           <div id="categories" class="btn-group" data-toggle="buttons"></div>
           <div id="filters">
             <label class="label label-primary">Filter by Event</label>
             <select id="event-list" class="selectpicker">
+              <option value="ALL">ALL</option>
             </select>
             <label class="label label-primary">Filter by Model</label>
             <select id="model-list" class="selectpicker">
+              <option value="ALL">ALL</option>
             </select>
           </div>
           <div id="results">
@@ -88,8 +90,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5" id="map-col">
-          <div id="map"></div>
+        <div class="col-md-9" id="map-col">
           <div style="width:100%;height:100%" id="mapView"></div>
           <div class="container-fluid" id="time-slider-wrapper">
             <input type="text" class="form-control" id="time-slider-min" disabled/>
