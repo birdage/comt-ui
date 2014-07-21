@@ -50,19 +50,18 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12" id="catalogue">
+          <label>Pick a model category</label>
           <div id="categories" class="btn-group" data-toggle="buttons"></div>
-          <div id="filters">
-            <label class="label label-primary">Filter by Event</label>
-            <select id="event-list" class="selectpicker">
-              <option value="ALL">ALL</option>
-            </select>
-            <label class="label label-primary">Filter by Model</label>
-            <select id="model-list" class="selectpicker">
-              <option value="ALL">ALL</option>
-            </select>
-          </div>
+          <label>Filter by Event</label>
+          <select id="event-list" class="selectpicker">
+            <option value="ALL">ALL</option>
+          </select>
+          <label>Filter by Model</label>
+          <select id="model-list" class="selectpicker">
+            <option value="ALL">ALL</option>
+          </select>
           <div id="results">
-            <h4>Query Results</h4>
+            <label>Click variable to add to map</label>
             <div class="table-wrapper">
               <table id="query-results" class="table table-condensed table-bordered">
                 <tbody>

@@ -77,20 +77,12 @@ ul.nav li:last-child.active a {
 	text-align: center;
 }
 
+#catalogue .btn-group.bootstrap-select {
+	margin: 0 8px;
+}
+
 #categories {
-	margin: 15px 0;
-}
-
-#filters {
-	text-align: center;
-}
-
-#filters .label-primary:last-of-type {
-	margin-left: 80px;
-}
-
-#filters .btn-group.bootstrap-select {
-	margin-bottom: 0;
+	margin: 15px;
 }
 
 .dropdown-menu.open span.text {
@@ -99,10 +91,6 @@ ul.nav li:last-child.active a {
 
 button.btn.dropdown-toggle.selectpicker.btn-default {
 	padding-right: 30px !important;
-}
-
-#results {
-	margin-top: 20px;
 }
 
 #results h4 {
@@ -119,14 +107,14 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 	overflow-x	: hidden;
 }
 
+#results div.title a {
+	color: #333;
+}
+
 #results > div > table,
 #active-layers > div > table {
 	table-layout: fixed;
 	border-top 	: none;
-}
-
-#results > div > table > tbody > tr > td {
-	cursor: pointer;
 }
 
 #results > div > table > tbody > tr > td,
