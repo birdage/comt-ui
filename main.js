@@ -6,7 +6,7 @@ var proj4326 = new OpenLayers.Projection("EPSG:4326");
 
 function resize() {
   var 	mapOffset 	= 103,
-        resultsTableOffset = 229,
+        resultsTableOffset = 170,
         activeMapLayersTableOffset = 170,
         timeSliderOffset = 150;
 	sliderOffset = 50;
@@ -187,7 +187,7 @@ function syncQueryResults() {
     _.each(_.keys(o.layers).sort(),function(l) {
       layers.push('<a href="#" data-name="' + l + '">' + l + '</a>');
     });
-    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="title">' + o.name + '</div>' + layers.join(', ') + '</td></tr>');
+    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="title"><a href="#">' + o.name + '</a></div>' + layers.join(', ') + '</td></tr>');
   });
   $('#results .table-wrapper td a').on('click', addToMap);
 
