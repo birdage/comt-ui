@@ -7,9 +7,10 @@ var proj4326 = new OpenLayers.Projection("EPSG:4326");
 function resize() {
   var 	mapOffset 	= 103,
         resultsTableOffset = 229,
-        activeMapLayersTableOffset = 170;
+        activeMapLayersTableOffset = 170,
+        timeSliderOffset = 150;
 	sliderOffset = 50;
-  $('#mapView').height($(window).height() - mapOffset - sliderOffset);
+  $('#mapView').height($(window).height() - mapOffset - sliderOffset - timeSliderOffset);
   $('#results .table-wrapper').height($(window).height() - resultsTableOffset);
   $('#active-layers .table-wrapper').height($(window).height() - activeMapLayersTableOffset);
   if (hasScrollBar($('#active-layers .table-wrapper')[0]))
