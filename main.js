@@ -185,7 +185,7 @@ function syncQueryResults() {
   _.each(_.sortBy(c,function(o){return o.name.toUpperCase()}),function(o) {
     var layers = [];
     _.each(_.keys(o.layers).sort(),function(l) {
-      layers.push('<a href="#" data-name="' + l + '">' + l + '</a>');
+      layers.push('<a href="#" data-name="' + l + '" class="btn btn-' + (l.match(/^h$/) ? 'primary' : (l.match(/^u\,v$/) ? 'success' : (l.match(/^zeta$/) ? 'warning' : (l.match(/^depth$/) ? 'danger' : 'default')))) + '">' + l + '</a>');
     });
     $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="thumbnail"></div><div class="title"><a href="#">' + o.name + '</a></div><br />' + layers.join(', ') + '</td></tr>');
   });
