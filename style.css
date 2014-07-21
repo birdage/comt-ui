@@ -143,7 +143,15 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 	font-size		: 18px;
 	color 			: #0b83be;
 	padding-bottom	: 10px;
+	display			: inline-block;
 
+}
+
+#results .thumbnail {
+	width	: 45px;
+	height	: 45px;
+	float	: right;
+	margin	: 4px 0 0 0;
 }
 
 #active-layers {

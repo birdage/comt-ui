@@ -187,7 +187,7 @@ function syncQueryResults() {
     _.each(_.keys(o.layers).sort(),function(l) {
       layers.push('<a href="#" data-name="' + l + '">' + l + '</a>');
     });
-    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="title"><a href="#">' + o.name + '</a></div>' + layers.join(', ') + '</td></tr>');
+    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="thumbnail"></div><div class="title"><a href="#">' + o.name + '</a></div><br />' + layers.join(', ') + '</td></tr>');
   });
   $('#results .table-wrapper td a').on('click', addToMap);
 
