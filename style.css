@@ -9,6 +9,7 @@ body{
 	background-image:     -ms-linear-gradient(left, #fff, #85c1de);
 	background-image:      -o-linear-gradient(left, #fff, #85c1de);
 	background-image:         linear-gradient(left, #fff, #85c1de);
+	color			: #777;
 }
 
 .btn {
@@ -141,7 +142,6 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 
 #results > div > table > tbody > tr > td > div.title {
 	font-size		: 18px;
-	color 			: #0b83be;
 	padding-bottom	: 5px;
 	display			: inline-block;
 
