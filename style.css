@@ -142,9 +142,37 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 #results > div > table > tbody > tr > td > div.title {
 	font-size		: 18px;
 	color 			: #0b83be;
-	padding-bottom	: 10px;
+	padding-bottom	: 5px;
 	display			: inline-block;
 
+}
+
+#results a.btn {
+	margin-top: 5px;
+}
+
+#results .download-data,
+#results .time-range {
+	float		: right;
+	font-size	: 15px;
+	margin-right: 10px;
+	display		: flex;
+}
+
+#results .download-data a,
+#results .time-range-label {
+	margin-top: 6px;
+}
+
+#results .download-data span,
+#results .time-range span {
+	margin-right: 5px;
+}
+
+#results .time-range input {
+	text-align	: center;
+	width		: 140px;
+	margin		: -1px 0 0 10px;
 }
 
 #results .thumbnail {
