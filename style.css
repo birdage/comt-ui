@@ -173,6 +173,7 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 	text-align	: center;
 	width		: 140px;
 	margin		: -1px 0 0 10px;
+	font-size	: 12px;
 }
 
 #results .thumbnail {
