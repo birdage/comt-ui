@@ -227,7 +227,26 @@ function syncQueryResults() {
       }
       layers.push('<a href="#" data-name="' + l + '" class="btn btn-' + name2Color[l] + '">' + l + '</a>');
     });
-    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="thumbnail"></div><div class="title">' + o.name + '</div><br /><div class="time-range"><div class="time-range-label"><span class="glyphicon glyphicon-time"></span>Time Range</div><input type="text" name="timeRange" value="" disabled class="form-control"></div><div class="download-data"><a href="#" title="Download Data"><span class="glyphicon glyphicon-download"></span>Download Data</a></div>' + layers.join(', ') + '</td></tr>');
+    var tSpan = '';
+    var minT = o.temporal[0];
+    var maxT = o.temporal[1];
+    if (minT != '' && maxT != '') {
+      if (isoDateToDate(minT).format('mmm d, yyyy') == isoDateToDate(maxT).format('mmm d, yyyy')) {
+        tSpan = isoDateToDate(minT).format('mmm d, yyyy');
+      }
+      else if (isoDateToDate(minT).format('yyyy') == isoDateToDate(maxT).format('yyyy')) {
+        if (isoDateToDate(minT).format('mmm') == isoDateToDate(maxT).format('mmm')) {
+          tSpan = isoDateToDate(minT).format('mmm d') + ' - ' + isoDateToDate(maxT).format('d, yyyy');
+        }
+        else {
+          tSpan = isoDateToDate(minT).format('mmm d') + ' - ' + isoDateToDate(maxT).format('mmm d, yyyy');
+        }
+      }
+      else {
+        tSpan = isoDateToDate(minT).format('mmm d, yyyy') + ' - ' + isoDateToDate(maxT).format('mmm d, yyyy');
+      }
+    }
+    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="thumbnail"></div><div class="title">' + o.name + '</div><br /><div class="time-range"><div class="time-range-label"><span class="glyphicon glyphicon-time"></span>Time Range</div><input type="text" name="timeRange" value="' + tSpan + '" disabled class="form-control"></div><div class="download-data"><a href="#" title="Download Data"><span class="glyphicon glyphicon-download"></span>Download Data</a></div>' + layers.join(', ') + '</td></tr>');
   });
   $('#results .table-wrapper td a').on('click', addToMap);
 
