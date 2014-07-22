@@ -283,7 +283,7 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 
 #time-series-controls button#clear-query {
 	float: right;
-	margin: 3px 5px 0 0;
+	margin: 3px 5px 3px 0;
 }
 
 #time-series-controls .bootstrap-select {
