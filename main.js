@@ -4,6 +4,15 @@ var catalog = [];
 var proj3857 = new OpenLayers.Projection("EPSG:3857");
 var proj4326 = new OpenLayers.Projection("EPSG:4326");
 
+var buttonClasses = [
+   'primary'
+  ,'success'
+  ,'info'
+  ,'warning'
+  ,'danger'
+];
+var name2Color = {};
+
 function resize() {
   var 	mapOffset 	= 103,
         resultsTableOffset = 170,
@@ -185,9 +194,12 @@ function syncQueryResults() {
   _.each(_.sortBy(c,function(o){return o.name.toUpperCase()}),function(o) {
     var layers = [];
     _.each(_.keys(o.layers).sort(),function(l) {
-      layers.push('<a href="#" data-name="' + l + '" class="btn btn-' + (l.match(/^h$/) ? 'primary' : (l.match(/^u\,v$/) ? 'success' : (l.match(/^zeta$/) ? 'warning' : (l.match(/^depth$/) ? 'danger' : 'default')))) + '">' + l + '</a>');
+      if (!name2Color[l]) {
+        name2Color[l] = buttonClasses[_.size(name2Color) % buttonClasses.length];
+      }
+      layers.push('<a href="#" data-name="' + l + '" class="btn btn-' + name2Color[l] + '">' + l + '</a>');
     });
-    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="thumbnail"></div><div class="title"><a href="#">' + o.name + '</a></div><br />' + layers.join(', ') + '</td></tr>');
+    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="thumbnail"></div><div class="title">' + o.name + '</div><br />' + layers.join(', ') + '</td></tr>');
   });
   $('#results .table-wrapper td a').on('click', addToMap);
 
