@@ -358,7 +358,7 @@ function setDate(dt) {
   $.each($('#active-layers table tbody tr td:first-child'),function() {
     map.getLayersByName($(this).text())[0].mergeNewParams({TIME : mapDate.format('yyyy-mm-dd"T"HH:00:00')});
   });
-
+  plot();
 }
 
 function clearMap() {
@@ -375,7 +375,8 @@ function clearMap() {
 }
 
 function clearQuery() {
-  $('#time-series-graph').empty();
+  plotData = [];
+  plot();
   lyrQuery.removeAllFeatures();
 }
 
@@ -437,7 +438,13 @@ function plot() {
       ,{
          xaxis     : {mode  : "time"}
         ,crosshair : {mode  : 'x'   }
-        ,grid      : {backgroundColor : {colors : ['#fff','#eee']},borderWidth : 1,borderColor : '#99BBE8',hoverable : true}
+        ,grid      : {
+           backgroundColor : {colors : ['#fff','#eee']}
+          ,borderWidth     : 1
+          ,borderColor     : '#99BBE8'
+          ,hoverable       : true
+          ,markings        : [{color : '#0e90d2',lineWidth : 2,xaxis : {from : mapDate.getTime(),to : mapDate.getTime()}}]
+        }
         ,zoom      : {interactive : false}
         ,pan       : {interactive : false}
         ,legend    : {backgroundOpacity : 0.3}
