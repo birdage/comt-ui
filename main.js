@@ -246,7 +246,8 @@ function syncQueryResults() {
         tSpan = isoDateToDate(minT).format('mmm d, yyyy') + ' - ' + isoDateToDate(maxT).format('mmm d, yyyy');
       }
     }
-    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="thumbnail"></div><div class="title">' + o.name + '</div><br /><div class="time-range"><div class="time-range-label"><span class="glyphicon glyphicon-time"></span>Time Range</div><input type="text" name="timeRange" value="' + tSpan + '" disabled class="form-control"></div><div class="download-data"><a href="#" title="Download Data"><span class="glyphicon glyphicon-download"></span>Download Data</a></div>' + layers.join(', ') + '</td></tr>');
+    var thumb = '<img width=60 height=60 src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyBuB8P_e6vQcucjnE64Kh2Fwu6WzhMXZzI&path=weight:1|fillcolor:0x0000AA11|color:0x0000FFBB|' + o.spatial[1] + ',' + o.spatial[0] + '|' + o.spatial[1] + ',' + o.spatial[2] + '|' + o.spatial[3] + ',' + o.spatial[2] + '|' + o.spatial[3] + ',' + o.spatial[0] + '|' + o.spatial[1] + ',' + o.spatial[0] + '&size=60x60&sensor=false" title="Data boundaries" alt="Data boundaries">';
+    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="thumbnail">' + thumb + '</div><div class="title">' + o.name + '</div><br /><div class="time-range"><div class="time-range-label"><span class="glyphicon glyphicon-time"></span>Time Range</div><input type="text" name="timeRange" value="' + tSpan + '" disabled class="form-control"></div><div class="download-data"><a target=_blank href="' + o.url + '" title="Download Data"><span class="glyphicon glyphicon-download"></span>Download Data</a></div>' + layers.join(', ') + '</td></tr>');
   });
   $('#results .table-wrapper td a').on('click', addToMap);
 
