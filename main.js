@@ -14,7 +14,7 @@ var buttonClasses = [
   ,'danger'
   ,'dark-blue'
   ,'tan'
-  ,'dark-green',
+  ,'dark-green'
   ,'brown'
   ,'aqua'
   ,'dark-pink'
