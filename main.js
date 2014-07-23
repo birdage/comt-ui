@@ -11,6 +11,13 @@ var buttonClasses = [
   ,'info'
   ,'warning'
   ,'danger'
+  ,'dark-blue'
+  ,'tan'
+  ,'dark-green',
+  ,'brown'
+  ,'aqua'
+  ,'dark-pink'
+  ,'mustard'
 ];
 var name2Color = {};
 
