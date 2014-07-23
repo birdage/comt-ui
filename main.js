@@ -98,8 +98,8 @@ function addToMap() {
       $('#time-slider').data('slider').min = startDate.getTime();
       $('#time-slider').data('slider').max = endDate.getTime();
       $('#time-slider').slider('setValue',mapDate.getTime());
-      $('#time-slider-min').val(startDate.toDateString());
-      $('#time-slider-max').val(endDate.toDateString());
+      $('#time-slider-min').val(startDate.format('UTC:yyyy-mm-dd'));
+      $('#time-slider-max').val(endDate.format('UTC:yyyy-mm-dd'));
     }
 
     var rowHtml = '<tr><td title="' + lyrName + '"><div>' + lyrName + '<a href="#" title="View Data" data-name="' + lyrName + '"><img src="./img/view_data.png" /></a></div></td>';
@@ -214,7 +214,7 @@ $(document).ready(function(){
     step: 6 * 3600000,
     formater: function(value) {
       var dateTime = new Date(value);
-      return dateTime.toString();
+      return dateTime.format('UTC:yyyy-mm-dd HH:00"Z"');
     },
   });
   $('#time-slider').slider().on('slideStop',function(e) {
@@ -241,7 +241,7 @@ $(document).ready(function(){
           var u = a.pop();
           u = u.substr(1,u.length - 2);
         }
-        showToolTip(item.pageX,item.pageY,new Date(x).format('yyyy-mm-dd HH:00"Z"') + ' : ' + (Math.round(y * 100) / 100) + ' ' + u);
+        showToolTip(item.pageX,item.pageY,new Date(x).format('UTC:yyyy-mm-dd HH:00"Z"') + ' : ' + (Math.round(y * 100) / 100) + ' ' + u);
       }
       prevPoint = item.dataIndex;
     }
@@ -273,19 +273,19 @@ function syncQueryResults() {
     var minT = o.temporal[0];
     var maxT = o.temporal[1];
     if (minT != '' && maxT != '') {
-      if (isoDateToDate(minT).format('mmm d, yyyy') == isoDateToDate(maxT).format('mmm d, yyyy')) {
-        tSpan = isoDateToDate(minT).format('mmm d, yyyy');
+      if (isoDateToDate(minT).format('UTC:mmm d, yyyy') == isoDateToDate(maxT).format('UTC:mmm d, yyyy')) {
+        tSpan = isoDateToDate(minT).format('UTC:mmm d, yyyy');
       }
-      else if (isoDateToDate(minT).format('yyyy') == isoDateToDate(maxT).format('yyyy')) {
-        if (isoDateToDate(minT).format('mmm') == isoDateToDate(maxT).format('mmm')) {
-          tSpan = isoDateToDate(minT).format('mmm d') + ' - ' + isoDateToDate(maxT).format('d, yyyy');
+      else if (isoDateToDate(minT).format('UTC:yyyy') == isoDateToDate(maxT).format('UTC:yyyy')) {
+        if (isoDateToDate(minT).format('UTC:mmm') == isoDateToDate(maxT).format('UTC:mmm')) {
+          tSpan = isoDateToDate(minT).format('UTC:mmm d') + ' - ' + isoDateToDate(maxT).format('UTC:d, yyyy');
         }
         else {
-          tSpan = isoDateToDate(minT).format('mmm d') + ' - ' + isoDateToDate(maxT).format('mmm d, yyyy');
+          tSpan = isoDateToDate(minT).format('UTC:mmm d') + ' - ' + isoDateToDate(maxT).format('UTC:mmm d, yyyy');
         }
       }
       else {
-        tSpan = isoDateToDate(minT).format('mmm d, yyyy') + ' - ' + isoDateToDate(maxT).format('mmm d, yyyy');
+        tSpan = isoDateToDate(minT).format('UTC:mmm d, yyyy') + ' - ' + isoDateToDate(maxT).format('UTC:mmm d, yyyy');
       }
     }
     var thumb = '<img width=60 height=60 src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyBuB8P_e6vQcucjnE64Kh2Fwu6WzhMXZzI&path=weight:1|fillcolor:0x0000AA11|color:0x0000FFBB|' + o.spatial[1] + ',' + o.spatial[0] + '|' + o.spatial[1] + ',' + o.spatial[2] + '|' + o.spatial[3] + ',' + o.spatial[2] + '|' + o.spatial[3] + ',' + o.spatial[0] + '|' + o.spatial[1] + ',' + o.spatial[0] + '&size=60x60&sensor=false" title="Data boundaries" alt="Data boundaries">';
@@ -327,13 +327,14 @@ function isoDateToDate(s) {
   if (p.length == 2) {
     var ymd = p[0].split('-');
     var hm = p[1].split(':');
-    return new Date(
+    var d = new Date(
        ymd[0]
       ,ymd[1] - 1
       ,ymd[2]
       ,hm[0]
       ,hm[1]
     );
+    return new Date(d.getTime() - d.getTimezoneOffset() * 60 * 1000);
   }
   else {
     return false;
@@ -349,7 +350,7 @@ function addWMS(d) {
       ,transparent : true
       ,styles      : d.styles
       ,format      : 'image/png'
-      ,TIME        : mapDate.format('yyyy-mm-dd"T"HH:00:00')
+      ,TIME        : mapDate.format('UTC:yyyy-mm-dd"T"HH:00:00')
     }
     ,{
        isBaseLayer      : false
@@ -388,8 +389,9 @@ function zoomToLayer(name) {
 
 function setDate(dt) {
   mapDate = dt;
+console.log(mapDate.format('UTC:yyyy-mm-dd"T"HH:00:00'));
   $.each($('#active-layers table tbody tr td:first-child'),function() {
-    map.getLayersByName($(this).text())[0].mergeNewParams({TIME : mapDate.format('yyyy-mm-dd"T"HH:00:00')});
+    map.getLayersByName($(this).text())[0].mergeNewParams({TIME : mapDate.format('UTC:yyyy-mm-dd"T"HH:00:00')});
   });
   plot();
 }
@@ -430,7 +432,7 @@ function query(xy) {
       ,HEIGHT       : map.size.h
       ,X            : Math.round(xy.x)
       ,Y            : Math.round(xy.y)
-      ,TIME         : new Date($('#time-slider').data('slider').min).format('yyyy-mm-dd"T"HH:00:00') + '/' + new Date($('#time-slider').data('slider').max).format('yyyy-mm-dd"T"HH:00:00')
+      ,TIME         : new Date($('#time-slider').data('slider').min).format('UTC:yyyy-mm-dd"T"HH:00:00') + '/' + new Date($('#time-slider').data('slider').max).format('UTC:yyyy-mm-dd"T"HH:00:00')
       ,callback     : 'foo'
     });
     $.ajax({
