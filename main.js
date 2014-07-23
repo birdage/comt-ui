@@ -429,7 +429,7 @@ function query(xy) {
 }
 
 function plot() {
-  $('#time-series-graph').html('Click somewhere on the map please!');
+  $('#time-series-graph').empty();
   if (_.size(plotData) > 0) {
     $.plot(
        $('#time-series-graph')
