@@ -372,7 +372,9 @@ function addWMS(d) {
     $('#active-layers a[data-name="' + e.object.name + '"] img').attr('src','./img/loading.gif');
   });
   lyr.events.register('loadend',this,function(e) {
-    $('#active-layers a[data-name="' + e.object.name + '"] img').attr('src','./img/view_data.png');
+    if (!e.object.activeQuery) {
+      $('#active-layers a[data-name="' + e.object.name + '"] img').attr('src','./img/view_data.png');
+    }
   });
   map.addLayer(lyr);
   return lyr.name;
@@ -389,7 +391,6 @@ function zoomToLayer(name) {
 
 function setDate(dt) {
   mapDate = dt;
-console.log(mapDate.format('UTC:yyyy-mm-dd"T"HH:00:00'));
   $.each($('#active-layers table tbody tr td:first-child'),function() {
     map.getLayersByName($(this).text())[0].mergeNewParams({TIME : mapDate.format('UTC:yyyy-mm-dd"T"HH:00:00')});
   });
@@ -423,6 +424,7 @@ function query(xy) {
   );
   lyrQuery.addFeatures([f]);
   _.each(_.filter(map.layers,function(o){return o.DEFAULT_PARAMS && o.visibility}),function(l) {
+    l.events.triggerEvent('loadstart');
     var u = l.getFullRequestString({
        REQUEST      : 'GetFeatureInfo'
       ,INFO_FORMAT  : 'text/javascript'
@@ -435,25 +437,38 @@ function query(xy) {
       ,TIME         : new Date($('#time-slider').data('slider').min).format('UTC:yyyy-mm-dd"T"HH:00:00') + '/' + new Date($('#time-slider').data('slider').max).format('UTC:yyyy-mm-dd"T"HH:00:00')
       ,callback     : 'foo'
     });
+    l.activeQuery = true;
     $.ajax({
        url      : u
       ,dataType : 'jsonp'
       ,v        : l.params.LAYERS
       ,title    : l.name
-      ,timeout  : 10000 // JSONP won't trap errors natively, so use a timeout.
+      ,timeout  : 30000 // JSONP won't trap errors natively, so use a timeout.
       ,success  : function(r) {
-        var d = {
-           data  : []
-          ,label : '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' (' + r.properties[this.v].units + ')' + '</a>'
-        };
-        for (var i = 0; i < r.properties.time.values.length; i++) {
-          d.data.push([isoDateToDate(r.properties.time.values[i]).getTime(),r.properties[this.v].values[i]]);
+        var lyr = map.getLayersByName(this.title)[0];
+        if (lyr) {
+          lyr.activeQuery = false;
+          lyr.events.triggerEvent('loadend');
         }
-        d.color = lineColors[plotData.length % lineColors.length][0];
-        plotData.push(d); 
+        if (r.properties[this.v]) {
+          var d = {
+             data  : []
+            ,label : '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' (' + r.properties[this.v].units + ')' + '</a>'
+          };
+          for (var i = 0; i < r.properties.time.values.length; i++) {
+            d.data.push([isoDateToDate(r.properties.time.values[i]).getTime(),r.properties[this.v].values[i]]);
+          }
+          d.color = lineColors[plotData.length % lineColors.length][0];
+          plotData.push(d); 
+        }
         plot();
       }
       ,error    : function(r) {
+        var lyr = map.getLayersByName(this.title)[0];
+        if (lyr) {
+          lyr.activeQuery = false;
+          lyr.events.triggerEvent('loadend');
+        }
         var d = {
            data  : []
           ,label : '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' <font color=red><b>ERROR</b></font>'
