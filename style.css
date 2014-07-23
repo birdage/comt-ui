@@ -295,3 +295,7 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 #time-series-graph {
 	height: 165px;
 }
+
+.olImageLoadError {
+	display: none;
+}

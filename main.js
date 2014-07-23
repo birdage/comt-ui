@@ -22,6 +22,17 @@ var buttonClasses = [
 ];
 var name2Color = {};
 
+var lineColors = [
+   ['#66C2A5','#1B9E77']
+  ,['#FC8D62','#D95F02']
+  ,['#8DA0CB','#7570B3']
+  ,['#E78AC3','#E7298A']
+  ,['#A6D854','#66A61E']
+  ,['#FFD92F','#E6AB02']
+  ,['#E5C494','#A6761D']
+  ,['#B3B3B3','#666666']
+];
+
 function resize() {
   var 	mapOffset 	= 103,
         resultsTableOffset = 170,
@@ -217,6 +228,28 @@ $(document).ready(function(){
   $('#active-layers button').on('click', clearMap);
   $('#clear-query').on('click', clearQuery);
   $('div.btn-group.bootstrap-select').css('width', $('ul.dropdown-menu.inner.selectpicker li').css('width'));
+
+  var prevPt;
+  $('#time-series-graph').bind('plothover',function(event,pos,item) {
+    if (item) {
+      var x = new Date(item.datapoint[0]);
+      var y = item.datapoint[1];
+      if (prevPoint != item.dataIndex) {
+        $('#tooltip').remove();
+        var a = item.series.label.match(/(\([^\)]*\))<\/a>/);
+        if (a.length == 2) {
+          var u = a.pop();
+          u = u.substr(1,u.length - 2);
+        }
+        showToolTip(item.pageX,item.pageY,new Date(x).format('yyyy-mm-dd HH:00"Z"') + ' : ' + (Math.round(y * 100) / 100) + ' ' + u);
+      }
+      prevPoint = item.dataIndex;
+    }
+    else {
+      $('#tooltip').remove();
+      prevPoint = null;
+    }
+  });
 });
 
 function syncQueryResults() {
@@ -414,6 +447,7 @@ function query(xy) {
         for (var i = 0; i < r.properties.time.values.length; i++) {
           d.data.push([isoDateToDate(r.properties.time.values[i]).getTime(),r.properties[this.v].values[i]]);
         }
+        d.color = lineColors[plotData.length % lineColors.length][0];
         plotData.push(d); 
         plot();
       }
@@ -422,6 +456,7 @@ function query(xy) {
            data  : []
           ,label : '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' <font color=red><b>ERROR</b></font>'
         };
+        d.color = lineColors[plotData.length % lineColors.length][0];
         plotData.push(d);
         plot();
       } 
@@ -451,4 +486,18 @@ function plot() {
       }
     );
   }
+}
+
+function showToolTip(x,y,contents) {
+  $('<div id="tooltip">' + contents + '</div>').css({
+     position           : 'absolute'
+    ,display            : 'none'
+    ,top                : y + 10
+    ,left               : x + 10
+    ,border             : '1px solid #99BBE8'
+    ,padding            : '2px'
+    ,'background-color' : '#fff'
+    ,opacity            : 0.80
+    ,'z-index'          : 10000001
+  }).appendTo("body").fadeIn(200);
 }
