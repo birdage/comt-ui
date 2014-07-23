@@ -2,6 +2,7 @@ var map;
 var lyrQuery;
 var mapDate;
 var catalog = [];
+var plotData = [];
 var proj3857 = new OpenLayers.Projection("EPSG:3857");
 var proj4326 = new OpenLayers.Projection("EPSG:4326");
 
@@ -30,6 +31,7 @@ function resize() {
     $('#active-layers .table-wrapper').css('height', 'auto');
   }
   map.updateSize();
+  plot();
 }
 
 window.onresize = resize;
@@ -371,6 +373,7 @@ function clearQuery() {
 }
 
 function query(xy) {
+  plotData = [];
   var lonLat = map.getLonLatFromPixel(xy);
   var f = new OpenLayers.Feature.Vector(
     new OpenLayers.Geometry.Point(lonLat.lon,lonLat.lat)
@@ -389,6 +392,40 @@ function query(xy) {
       ,TIME         : new Date($('#time-slider').data('slider').min).format('yyyy-mm-dd"T"HH:00:00') + '/' + new Date($('#time-slider').data('slider').max).format('yyyy-mm-dd"T"HH:00:00')
       ,callback     : 'foo'
     });
-    $('#time-series-graph ul').append('<li><a href="' + u + '" target=_blank>' + l.name + '</a></li>');
+    $.ajax({
+       url      : u
+      ,dataType : 'jsonp'
+      ,v        : l.params.LAYERS
+      ,title    : l.name
+      ,success  : function(r) {
+        var d = {
+           data  : []
+          ,label : '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' (' + r.properties[this.v].units + ')' + '</a>'
+        };
+        for (var i = 0; i < r.properties.time.values.length; i++) {
+          d.data.push([isoDateToDate(r.properties.time.values[i]).getTime(),r.properties[this.v].values[i]]);
+        }
+        plotData.push(d); 
+        plot();
+      }
+    });
   });
+}
+
+function plot() {
+  $('#time-series-graph').empty();
+  if (_.size(plotData) > 0) {
+    $.plot(
+       $('#time-series-graph')
+      ,plotData
+      ,{
+         xaxis     : {mode  : "time"}
+        ,crosshair : {mode  : 'x'   }
+        ,grid      : {backgroundColor : {colors : ['#fff','#eee']},borderWidth : 1,borderColor : '#99BBE8',hoverable : true}
+        ,zoom      : {interactive : false}
+        ,pan       : {interactive : false}
+        ,legend    : {backgroundOpacity : 0.3}
+      }
+    );
+  }
 }
