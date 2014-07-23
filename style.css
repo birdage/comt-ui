@@ -295,3 +295,13 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 #time-series-graph {
 	height: 165px;
 }
+
+#time-series-div #empty-placeholder {
+	position		: absolute;
+	margin-top		: -90px;
+	width			: 100%;
+	text-align		: center;
+	font-style		: italic;
+	font-size		: large;
+	padding-right	: 15px;
+}
