@@ -307,6 +307,7 @@ function addWMS(d) {
       ,transparent : true
       ,styles      : d.styles
       ,format      : 'image/png'
+      ,TIME        : mapDate.format('yyyy-mm-dd"T"HH:00:00')
     }
     ,{
        isBaseLayer      : false
@@ -317,7 +318,6 @@ function addWMS(d) {
       ,opacity          : 1
       ,noMagic          : true
       ,transitionEffect : 'resize'
-      ,time             : mapDate.format('yyyy-mm-dd"T"HH:00:00')
     }
   );
   lyr.group = d.group;
