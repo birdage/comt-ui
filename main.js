@@ -375,7 +375,7 @@ function clearMap() {
 }
 
 function clearQuery() {
-  $('#time-series-graph ul').empty();
+  $('#time-series-graph').empty();
   lyrQuery.removeAllFeatures();
 }
 
@@ -404,6 +404,7 @@ function query(xy) {
       ,dataType : 'jsonp'
       ,v        : l.params.LAYERS
       ,title    : l.name
+      ,timeout  : 10000 // JSONP won't trap errors natively, so use a timeout.
       ,success  : function(r) {
         var d = {
            data  : []
@@ -415,6 +416,14 @@ function query(xy) {
         plotData.push(d); 
         plot();
       }
+      ,error    : function(r) {
+        var d = {
+           data  : []
+          ,label : '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' <font color=red><b>ERROR</b></font>'
+        };
+        plotData.push(d);
+        plot();
+      } 
     });
   });
 }
