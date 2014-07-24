@@ -342,6 +342,7 @@ function isoDateToDate(s) {
 }
 
 function addWMS(d) {
+  _gaq.push(['_trackEvent','add layer',d.group + '-' + d.layers]);
   var lyr = new OpenLayers.Layer.WMS(
      d.group + '-' + d.layers
     ,'http://comt.sura.org:8080/wms/datasets/' + d.group + '/'
@@ -445,6 +446,7 @@ function query(xy) {
       ,title    : l.name
       ,timeout  : 30000 // JSONP won't trap errors natively, so use a timeout.
       ,success  : function(r) {
+        _gaq.push(['_trackEvent','query layer - OK',this.title]);
         var lyr = map.getLayersByName(this.title)[0];
         if (lyr) {
           lyr.activeQuery = false;
@@ -484,6 +486,7 @@ function query(xy) {
         plot();
       }
       ,error    : function(r) {
+        _gaq.push(['_trackEvent','query layer - ERROR',this.title]);
         var lyr = map.getLayersByName(this.title)[0];
         if (lyr) {
           lyr.activeQuery = false;
