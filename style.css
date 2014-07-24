@@ -307,6 +307,11 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 	z-index: 100;
 }
 
+.dir {
+	z-index: 101;
+	pointer-events: none;
+}
+
 .olImageLoadError {
 	display: none;
 }

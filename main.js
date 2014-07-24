@@ -450,7 +450,26 @@ function query(xy) {
           lyr.activeQuery = false;
           lyr.events.triggerEvent('loadend');
         }
-        if (r.properties[this.v]) {
+        // special case for u,v
+        if (this.v == 'u,v' && r.properties['u'] && r.properties['v']) {
+          var d = {
+             data  : []
+            ,vData : []
+            ,label : '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' (' + r.properties['u'].units + ')' + '</a>'
+          };
+          for (var i = 0; i < r.properties.time.values.length; i++) {
+            var u = r.properties['u'].values[i];
+            var v = r.properties['v'].values[i];
+            var spd = Math.sqrt(Math.pow(u,2) + Math.pow(v,2));
+            var dir = Math.atan2(u,v) * 180 / Math.PI;
+            dir += dir < 0 ? 360 : 0;
+            d.data.push([isoDateToDate(r.properties.time.values[i]).getTime(),spd]);
+            d.vData.push([isoDateToDate(r.properties.time.values[i]).getTime(),dir]);
+          }
+          d.color = lineColors[plotData.length % lineColors.length][0];
+          plotData.push(d);
+        }
+	else if (r.properties[this.v]) {
           var d = {
              data  : []
             ,label : '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' (' + r.properties[this.v].units + ')' + '</a>'
@@ -484,7 +503,7 @@ function query(xy) {
 function plot() {
   $('#time-series-graph').empty();
   if (_.size(plotData) > 0) {
-    $.plot(
+    var plot = $.plot(
        $('#time-series-graph')
       ,plotData
       ,{
@@ -502,6 +521,19 @@ function plot() {
         ,legend    : {backgroundOpacity : 0.3}
       }
     );
+
+    // go back and plot any vectors
+    var imageSize = 80;
+    _.each(plotData,function(d) {
+      if (d.vData) {
+        var c = _.find(lineColors,function(o){return o[0] == d.color})[1];
+        // assume 1:1 for u:v
+        for (var i = 0; i < d.data.length; i++) {
+          var o = plot.pointOffset({x : d.data[i][0],y : d.data[i][1]});
+          $('#time-series-graph').prepend('<div class="dir" style="position:absolute;left:' + (o.left-imageSize/2) + 'px;top:' + (o.top-(imageSize/2)) + 'px;background-image:url(\'./img/arrows/' + imageSize + 'x' + imageSize + '.dir' + Math.round(d.vData[i][1]) + '.' + c.replace('#','') + '.png\');width:' + imageSize + 'px;height:' + imageSize + 'px;"></div>');
+        }
+      }
+    });
   }
 }
 
