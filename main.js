@@ -469,13 +469,14 @@ function query(xy) {
           d.color = lineColors[plotData.length % lineColors.length][0];
           plotData.push(d);
         }
-	else if (r.properties[this.v]) {
+        else if (r.properties[this.v]) {
           var d = {
              data  : []
             ,label : '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' (' + r.properties[this.v].units + ')' + '</a>'
           };
           for (var i = 0; i < r.properties.time.values.length; i++) {
-            d.data.push([isoDateToDate(r.properties.time.values[i]).getTime(),r.properties[this.v].values[i]]);
+            var val = _.isUndefined(r.properties[this.v].values[i]) ? r.properties[this.v].values[0] : r.properties[this.v].values[i];
+            d.data.push([isoDateToDate(r.properties.time.values[i]).getTime(),val]);
           }
           d.color = lineColors[plotData.length % lineColors.length][0];
           plotData.push(d); 
