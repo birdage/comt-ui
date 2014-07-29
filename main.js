@@ -381,6 +381,15 @@ function addWMS(d) {
   return lyr.name;
 }
 
+function getLayerLegend(name) {
+  var lyr = map.getLayersByName(name)[0];
+  return lyr.getFullRequestString({
+     REQUEST : 'GetLegendGraphic'
+    ,LAYER   : lyr.params.LAYERS
+    ,TIME    : mapDate.format('UTC:yyyy-mm-dd"T"HH:00:00')
+  });
+}
+
 function toggleLayerVisibility(name) {
   var lyr = map.getLayersByName(name)[0];
   lyr.setVisibility(!lyr.visibility);
