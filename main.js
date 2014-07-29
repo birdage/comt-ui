@@ -428,7 +428,7 @@ function addObs(d) {
       getObs : d.getObs.url 
         + '&offering=' + d.getObs.offering + k
         + '&procedure=' + d.getObs.procedure + k
-        + '&observedProperty=' + d.getObs.property
+        + '&observedProperty=' + d.layers
         + '&eventTime=' + isoDateToDate(d.times[0]).format('UTC:yyyy-mm-dd"T"HH:00:00') + '/' + isoDateToDate(d.times[1]).format('UTC:yyyy-mm-dd"T"HH:00:00')
       ,name : k
     };
