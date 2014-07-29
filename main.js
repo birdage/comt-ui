@@ -436,7 +436,6 @@ function query(xy) {
       ,X            : Math.round(xy.x)
       ,Y            : Math.round(xy.y)
       ,TIME         : new Date($('#time-slider').data('slider').min).format('UTC:yyyy-mm-dd"T"HH:00:00') + '/' + new Date($('#time-slider').data('slider').max).format('UTC:yyyy-mm-dd"T"HH:00:00')
-      ,callback     : 'foo'
     });
     l.activeQuery = true;
     $.ajax({
