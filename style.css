@@ -112,6 +112,19 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 	background-color: #fff;
 }
 
+#active-layers .table-wrapper a {
+	height: 26px;
+}
+
+#active-layers .table-wrapper a span.glyphicon-zoom-in {
+	font-size	: 20px;
+	margin-top	: 3px;
+}
+
+#active-layers .table-wrapper a img {
+	display: none;
+}
+
 #results div.title a {
 	color: #333;
 }

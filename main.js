@@ -120,7 +120,7 @@ function addToMap() {
     }
 
     var title = obs ? '' : 'title="<img src=\'' + getLayerLegend(lyrName) + '\' alt=\'\'>"';
-    var rowHtml = '<tr data-toggle="tooltip" data-placement="right" data-html="true" ' + title + '><td title="' + lyrName + '"><div>' + lyrName + '<a href="#" title="View Data" data-name="' + lyrName + '"><img src="./img/view_data.png" /></a></div></td>';
+    var rowHtml = '<tr data-toggle="tooltip" data-placement="right" data-html="true" ' + title + '><td title="' + lyrName + '"><div>' + lyrName + '<a href="#" title="Zoom To" data-name="' + lyrName + '"><span class="glyphicon glyphicon-zoom-in"></span><img src="./img/loading.gif"></a></div></td>';
     rowHtml += '<td class="checkbox-cell"><input type="checkbox" checked value="' + lyrName + '" /></td>';
     $('#active-layers table tbody').append(rowHtml);
     $('#active-layers input:checkbox').off('click');
@@ -393,11 +393,13 @@ function addWMS(d) {
   map.zoomToExtent(d.bbox);
 
   lyr.events.register('loadstart',this,function(e) {
-    $('#active-layers a[data-name="' + e.object.name + '"] img').attr('src','./img/loading.gif');
+    $('#active-layers a[data-name="' + e.object.name + '"] img').show();
+    $('#active-layers a[data-name="' + e.object.name + '"] span').hide();
   });
   lyr.events.register('loadend',this,function(e) {
     if (e.object.activeQuery == 0) {
-      $('#active-layers a[data-name="' + e.object.name + '"] img').attr('src','./img/view_data.png');
+      $('#active-layers a[data-name="' + e.object.name + '"] img').hide();
+      $('#active-layers a[data-name="' + e.object.name + '"] span').show();
     }
   });
   map.addLayer(lyr);
@@ -434,11 +436,13 @@ function addObs(d) {
   lyr.addFeatures(features);
 
   lyr.events.register('loadstart',this,function(e) {
-    $('#active-layers a[data-name="' + e.object.name + '"] img').attr('src','./img/loading.gif');
+    $('#active-layers a[data-name="' + e.object.name + '"] img').show();
+      $('#active-layers a[data-name="' + e.object.name + '"] span').hide();
   });
   lyr.events.register('loadend',this,function(e) {
     if (e.object.activeQuery == 0) {
-      $('#active-layers a[data-name="' + e.object.name + '"] img').attr('src','./img/view_data.png');
+     $('#active-layers a[data-name="' + e.object.name + '"] img').hide();
+      $('#active-layers a[data-name="' + e.object.name + '"] span').show();
     }
   });
   map.addLayer(lyr);
