@@ -1,5 +1,8 @@
 var obs = [{
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_USGSPERM_AL': {},
     'stations': [{
         'USGSPERM_2378300': {
@@ -11,17 +14,17 @@ var obs = [{
     'temporal': ['2008-08-01T00:30:00', '2008-08-01T23:29:59'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGSPERM_AL.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': [-87.736946, 30.406389],
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'USGS-PERM_2479000': {
             'temporal': ['2004-10-01T00:00:00', '2005-09-30T23:29:59'],
@@ -348,17 +351,17 @@ var obs = [{
     'watlev_USGS-PERM_LATXMS': {},
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-PERM_LATXMS.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.77555847167969, 27.711111068725586, -88.26333618164062, 30.978055953979492),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_USGS-PERM_AL': {},
     'stations': [{
         'USGS-PERM_2378300': {
@@ -370,17 +373,17 @@ var obs = [{
     'temporal': ['2008-08-01T00:30:00', '2008-08-01T23:29:59'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-PERM_AL.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': [-87.736946, 30.406389],
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'USGS-PERM_2479000': {
             'temporal': ['2007-10-01T05:00:00', '2008-08-01T23:29:59'],
@@ -906,18 +909,18 @@ var obs = [{
     'temporal': ['2007-10-01T05:00:00', '2008-08-01T23:29:59'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-PERM.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.77555847167969, 27.711111068725586, -87.73694610595703, 30.978055953979492),
-    'org_model': 'OBSERVATIONS ',
-    'watlev_USGS-PERM': {},
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS',
+    'watlev_USGS-PERM': {}
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'USGS-PERM_2479000': {
             'temporal': ['2007-10-01T05:00:00', '2008-08-01T23:29:59'],
@@ -1273,18 +1276,18 @@ var obs = [{
     'temporal': ['2007-10-01T05:00:00', '2008-08-01T23:29:59'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-PERM.F.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.27889251708984, 28.29166603088379, -88.64138793945312, 30.978055953979492),
-    'org_model': 'OBSERVATIONS ',
-    'watlev_USGS-PERM': {},
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS',
+    'watlev_USGS-PERM': {}
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'USGS-PERM_2378300': {
             'temporal': ['2008-09-08T00:10:00', '2008-09-16T00:00:00'],
@@ -1790,18 +1793,18 @@ var obs = [{
     'temporal': ['2008-09-08T00:10:00', '2008-09-16T00:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-PERM.F.C_mod_base_cycle_5.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.77555847167969, 27.711111068725586, -87.73694610595703, 30.978055953979492),
-    'org_model': 'OBSERVATIONS ',
-    'watlev_USGS-PERM': {},
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS',
+    'watlev_USGS-PERM': {}
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'USGS-PERM_2479000': {
             'temporal': ['2007-10-01T05:00:00', '2008-08-01T23:29:59'],
@@ -2157,18 +2160,18 @@ var obs = [{
     'temporal': ['2007-10-01T05:00:00', '2008-08-01T23:29:59'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-PERM.F.C.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.27889251708984, 28.29166603088379, -88.64138793945312, 30.978055953979492),
-    'org_model': 'OBSERVATIONS ',
-    'watlev_USGS-PERM': {},
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS',
+    'watlev_USGS-PERM': {}
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'USGS-PERM_2378300': {
             'temporal': ['2008-08-01T00:30:00', '2008-08-01T23:29:59'],
@@ -2179,18 +2182,18 @@ var obs = [{
     'temporal': ['2008-08-01T00:30:00', '2008-08-01T23:29:59'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-PERM.C.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': [-87.736946, 30.406389],
-    'org_model': 'OBSERVATIONS ',
-    'watlev_USGS-PERM': {},
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS',
+    'watlev_USGS-PERM': {}
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'USGS-DEPL_B15b': {
             'temporal': ['2005-09-23T02:49:59', '2005-09-28T16:59:00'],
@@ -2327,17 +2330,17 @@ var obs = [{
     'watlev_USGS-DEPL_surge': {},
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-DEPL_surge.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.89800262451172, 29.706579208374023, -92.12702941894531, 30.28491973876953),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'USGS-DEPL_B15b': {
             'temporal': ['2005-09-23T02:49:59', '2005-09-28T16:59:00'],
@@ -2474,17 +2477,17 @@ var obs = [{
     'watlev_USGS-DEPL_surge': {},
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-DEPL_surge.F.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.89800262451172, 29.706579208374023, -92.12702941894531, 30.28491973876953),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'USGS-DEPL_B15b': {
             'temporal': ['2005-09-23T02:49:59', '2005-09-28T16:59:00'],
@@ -2621,17 +2624,17 @@ var obs = [{
     'watlev_USGS-DEPL_surge': {},
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-DEPL_surge.F.C.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.89800262451172, 29.706579208374023, -92.12702941894531, 30.28491973876953),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'USGS-DEPL_SSS-TX-BRA-005': {
             'temporal': ['2008-09-10T18:00:00', '2008-09-21T04:59:00'],
@@ -2702,18 +2705,18 @@ var obs = [{
     'temporal': ['2008-09-10T18:00:00', '2008-09-21T04:59:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-DEPL_riverine.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'watlev_USGS-DEPL_riverine': {},
     'storm': '',
     'spatial': (-95.99579620361328, 28.6830997467041, -93.01439666748047, 29.80419921875),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'USGS-DEPL_SSS-TX-GAL-008': {
             'temporal': ['2008-09-10T18:00:00', '2008-09-21T04:59:00'],
@@ -2759,18 +2762,18 @@ var obs = [{
     'temporal': ['2008-09-10T18:00:00', '2008-09-21T04:59:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-DEPL_beach.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'watlev_USGS-DEPL_beach': {},
     'storm': '',
     'spatial': (-95.97810363769531, 28.60059928894043, -94.0436019897461, 29.674999237060547),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_USGS-DEPL': {},
     'stations': [{
         'USGS-DEPL_SSS-TX-GAL-008': {
@@ -3072,17 +3075,17 @@ var obs = [{
     'temporal': ['2008-09-10T18:00:00', '2008-09-21T04:59:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-DEPL.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-96.71170043945312, 28.406400680541992, -92.3416976928711, 29.8705997467041),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_USGS-DEPL': {},
     'stations': [{
         'USGS-DEPL_SSS-TX-GAL-008': {
@@ -3384,17 +3387,17 @@ var obs = [{
     'temporal': ['2008-09-10T18:00:00', '2008-09-21T04:59:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-DEPL.F.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-96.71170043945312, 28.406400680541992, -92.3416976928711, 29.8705997467041),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_USGS-DEPL': {},
     'stations': [{
         'USGS-DEPL_SSS-TX-GAL-008': {
@@ -3696,17 +3699,17 @@ var obs = [{
     'temporal': ['2008-09-08T00:10:00', '2008-09-16T00:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-DEPL.F.C_mod_base_cycle_5.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-96.71170043945312, 28.406400680541992, -92.3416976928711, 29.8705997467041),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_USGS-DEPL': {},
     'stations': [{
         'USGS-DEPL_SSS-TX-GAL-008': {
@@ -4008,17 +4011,17 @@ var obs = [{
     'temporal': ['2008-09-10T18:00:00', '2008-09-21T04:59:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-DEPL.F.C.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-96.71170043945312, 28.406400680541992, -92.3416976928711, 29.8705997467041),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_USGS-DEPL': {},
     'stations': [{
         'USGS-DEPL_SSS-TX-GAL-008': {
@@ -4320,17 +4323,17 @@ var obs = [{
     'temporal': ['2008-09-10T18:00:00', '2008-09-21T04:59:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-DEPL.C.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-96.71170043945312, 28.406400680541992, -92.3416976928711, 29.8705997467041),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_USGS-DEPL': {},
     'stations': [{
         'USGS-DEPL_SSS-TX-GAL-008': {
@@ -4607,17 +4610,17 @@ var obs = [{
     'temporal': ['2008-09-10T18:00:00', '2008-09-21T04:59:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-DEPL.C.F.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-96.71170043945312, 28.406400680541992, -92.3416976928711, 29.8705997467041),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_USACE': {},
     'stations': [{
         'USACE_01220': {
@@ -4894,17 +4897,17 @@ var obs = [{
     'temporal': ['2009-03-11T12:59:59', '2008-07-31T15:59:59'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USACE.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.29488372802734, 28.927478790283203, -89.24652862548828, 30.615833282470703),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_USACE': {},
     'stations': [{
         'USACE_01220': {
@@ -5166,17 +5169,17 @@ var obs = [{
     'temporal': ['2009-03-11T12:59:59', '2008-07-31T15:59:59'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USACE.F.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.29488372802734, 28.927478790283203, -89.24652862548828, 30.615833282470703),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_USACE': {},
     'stations': [{
         'USACE_01220': {
@@ -5438,17 +5441,17 @@ var obs = [{
     'temporal': ['2008-09-08T00:10:00', '2008-09-16T00:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USACE.F.C_mod_base_cycle_5.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.29488372802734, 28.927478790283203, -89.24652862548828, 30.615833282470703),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_USACE': {},
     'stations': [{
         'USACE_01220': {
@@ -5710,17 +5713,17 @@ var obs = [{
     'temporal': ['2009-03-11T12:59:59', '2008-07-31T15:59:59'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USACE.F.C.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.29488372802734, 28.927478790283203, -89.24652862548828, 30.615833282470703),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'USACE-CHL_2410504B': {
             'temporal': ['2008-09-08T00:10:00', '2008-09-16T00:00:00'],
@@ -5756,18 +5759,18 @@ var obs = [{
     'temporal': ['2008-09-08T00:10:00', '2008-09-16T00:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USACE-CHL_mod_base_cycle_5.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-90.61996459960938, 29.247583389282227, -89.34038543701172, 29.913816452026367),
-    'org_model': 'OBSERVATIONS ',
-    'watlev_USACE-CHL_mod_base_cycle_5': {},
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS',
+    'watlev_USACE-CHL_mod_base_cycle_5': {}
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'USACE-CHL_2410504B': {
             'temporal': ['2008-09-01T00:00:00', '2008-09-04T23:00:00'],
@@ -5803,18 +5806,18 @@ var obs = [{
     'temporal': ['2008-09-01T00:00:00', '2008-09-04T23:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USACE-CHL.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-90.61996459960938, 29.247583389282227, -89.34038543701172, 29.913816452026367),
-    'org_model': 'OBSERVATIONS ',
-    'watlev_USACE-CHL': {},
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS',
+    'watlev_USACE-CHL': {}
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'USACE-CHL_2410504B': {
             'temporal': ['2008-09-01T00:00:00', '2008-09-04T09:00:00'],
@@ -5850,18 +5853,18 @@ var obs = [{
     'temporal': ['2008-09-01T00:00:00', '2008-09-04T09:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USACE-CHL.F.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-90.61996459960938, 29.247583389282227, -89.34038543701172, 29.913816452026367),
-    'org_model': 'OBSERVATIONS ',
-    'watlev_USACE-CHL': {},
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS',
+    'watlev_USACE-CHL': {}
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'UNDKennedy_R': {
             'temporal': ['2008-09-08T00:10:00', '2008-09-16T00:00:00'],
@@ -5907,18 +5910,18 @@ var obs = [{
     'temporal': ['2008-09-08T00:10:00', '2008-09-16T00:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_UNDKennedy_mod_base_cycle_5.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.11759948730469, 27.6289005279541, -94.12533569335938, 29.58468246459961),
     'watlev_UNDKennedy_mod_base_cycle_5': {},
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'UNDKennedy_R': {
             'temporal': ['2008-09-10T20:14:00', '2008-09-22T15:34:59'],
@@ -5964,18 +5967,18 @@ var obs = [{
     'temporal': ['2008-09-10T20:14:00', '2008-09-22T15:34:59'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_UNDKennedy.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.11759948730469, 27.6289005279541, -94.12533569335938, 29.58468246459961),
-    'org_model': 'OBSERVATIONS ',
-    'watlev_UNDKennedy': {},
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS',
+    'watlev_UNDKennedy': {}
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'TCOON_8779770': {
             'temporal': ['2008-09-06T00:00:00', '2008-09-20T23:53:59'],
@@ -6127,17 +6130,17 @@ var obs = [{
     'watlev_TCOON': {},
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_TCOON.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.5208969116211, 26.061599731445312, -93.83721923828125, 29.979999542236328),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'TCOON_8779770': {
             'temporal': ['2008-09-06T00:00:00', '2008-09-20T23:53:59'],
@@ -6289,17 +6292,17 @@ var obs = [{
     'watlev_TCOON': {},
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_TCOON.F.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.5208969116211, 26.061599731445312, -93.83721923828125, 29.979999542236328),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'TCOON_8779770': {
             'temporal': ['2008-09-08T00:10:00', '2008-09-16T00:00:00'],
@@ -6451,17 +6454,17 @@ var obs = [{
     'watlev_TCOON': {},
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_TCOON.F.C_mod_base_cycle_5.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.5208969116211, 26.061599731445312, -93.83721923828125, 29.979999542236328),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'TCOON_8779770': {
             'temporal': ['2008-09-06T00:00:00', '2008-09-20T23:53:59'],
@@ -6613,17 +6616,17 @@ var obs = [{
     'watlev_TCOON': {},
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_TCOON.F.C.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.5208969116211, 26.061599731445312, -93.83721923828125, 29.979999542236328),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'CRMS_BA04-17': {
             'temporal': ['2005-09-01T05:00:08', '2005-08-01T23:29:59'],
@@ -7835,17 +7838,17 @@ var obs = [{
     'temporal': ['2005-09-01T05:00:08', '2005-08-01T23:29:59'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_RITA.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.77555847167969, 24.555700302124023, -81.1050033569336, 30.978330612182617),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_NOAA_VER': {},
     'stations': [{
         'NOAA_8723970': {
@@ -8082,17 +8085,17 @@ var obs = [{
     'temporal': ['2008-08-20T00:00:00', '2008-09-20T23:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_NOAA_VER.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.2166976928711, 24.555700302124023, -81.1050033569336, 30.708330154418945),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_NOAA_PRE': {},
     'stations': [{
         'NOAA_8724698': {
@@ -8414,17 +8417,17 @@ var obs = [{
     'temporal': ['2008-08-20T00:00:00', '2008-09-20T23:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_NOAA_PRE.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.4749984741211, 24.631669998168945, -82.44830322265625, 30.978330612182617),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'NOAA_8723970': {
             'temporal': ['2005-08-01T00:00:00', '2005-10-01T23:00:00'],
@@ -8636,17 +8639,17 @@ var obs = [{
     'temporal': ['2005-08-01T00:00:00', '2005-10-01T23:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_NOAA_NAVD_VER.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.2166976928711, 24.555700302124023, -81.1050033569336, 30.978330612182617),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'NOAA_8724698': {
             'temporal': ['2005-08-01T00:00:00', '2005-10-01T23:00:00'],
@@ -8968,17 +8971,17 @@ var obs = [{
     'watlev_NOAA_NAVD_PRE': {},
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_NOAA_NAVD_PRE.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.4749984741211, 24.631669998168945, -82.44830322265625, 30.708330154418945),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'NOAA_8724698': {
             'temporal': ['2005-08-01T00:00:00', '2005-10-01T23:00:00'],
@@ -9505,17 +9508,17 @@ var obs = [{
     'url': 'http://testbedapps-dev.sura.org/thredds/catalog/imeds/measurement/catalog.html?dataset=imeds/measurement/watlev_NOAA.nc',
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_NOAA.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.4749984741211, 24.555700302124023, -81.1050033569336, 30.978330612182617),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'NOAA_8724698': {
             'temporal': ['2005-08-01T00:00:00', '2005-10-01T23:00:00'],
@@ -10022,17 +10025,17 @@ var obs = [{
     'url': 'http://testbedapps-dev.sura.org/thredds/catalog/imeds/measurement/catalog.html?dataset=imeds/measurement/watlev_NOAA.F.nc',
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_NOAA.F.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.4749984741211, 24.555700302124023, -81.1050033569336, 30.978330612182617),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'NOAA_8723970': {
             'temporal': ['2008-09-08T00:10:00', '2008-09-16T00:00:00'],
@@ -10574,17 +10577,17 @@ var obs = [{
     'url': 'http://testbedapps-dev.sura.org/thredds/catalog/imeds/measurement/catalog.html?dataset=imeds/measurement/watlev_NOAA.F.C_mod_base_cycle_5.nc',
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_NOAA.F.C_mod_base_cycle_5.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.4749984741211, 24.555700302124023, -81.1050033569336, 30.978330612182617),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'NOAA_8724698': {
             'temporal': ['2005-08-01T00:00:00', '2005-10-01T23:00:00'],
@@ -11091,17 +11094,17 @@ var obs = [{
     'url': 'http://testbedapps-dev.sura.org/thredds/catalog/imeds/measurement/catalog.html?dataset=imeds/measurement/watlev_NOAA.F.C.nc',
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_NOAA.F.C.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.4749984741211, 24.555700302124023, -81.1050033569336, 30.978330612182617),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'CRMS_BA04-07': {
             'temporal': ['2008-08-01T05:00:08', '2008-08-01T23:29:59'],
@@ -14028,17 +14031,17 @@ var obs = [{
     'watlev_IKE': {},
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_IKE.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-97.5208969116211, 24.555700302124023, -81.1050033569336, 30.978055953979492),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'CSI_05': {
             'temporal': ['2008-08-11T14:00:00', '2008-09-30T00:00:00'],
@@ -14060,17 +14063,17 @@ var obs = [{
     'watlev_CSI_v2': {},
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CSI_v2.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-90.83200073242188, 28.833166122436523, -90.48332977294922, 29.053333282470703),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'CSI_03': {
             'temporal': ['2008-08-02T00:00:00', '2008-08-13T18:59:59'],
@@ -14092,17 +14095,17 @@ var obs = [{
     'watlev_CSI_v1': {},
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CSI_v1.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-92.06133270263672, 29.101499557495117, -89.03546905517578, 29.4411678314209),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_CSI_mod_base_cycle_5': {},
     'stations': [{
         'CSI_03': {
@@ -14134,17 +14137,17 @@ var obs = [{
     'temporal': ['2008-09-08T00:10:00', '2008-09-16T00:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CSI_mod_base_cycle_5.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-92.06133270263672, 28.833166122436523, -89.97816467285156, 29.4411678314209),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'CSI_03': {
             'temporal': ['2008-08-02T00:00:00', '2008-09-01T05:00:00'],
@@ -14175,18 +14178,18 @@ var obs = [{
     'temporal': ['2008-08-02T00:00:00', '2008-09-01T05:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CSI.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'watlev_CSI': {},
     'storm': '',
     'spatial': (-92.06133270263672, 28.833166122436523, -89.97816467285156, 29.4411678314209),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'CSI_03': {
             'temporal': ['2008-08-02T00:00:00', '2008-09-30T00:00:00'],
@@ -14217,18 +14220,18 @@ var obs = [{
     'temporal': ['2008-08-02T00:00:00', '2008-09-30T00:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CSI.F.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'watlev_CSI': {},
     'storm': '',
     'spatial': (-92.06133270263672, 28.833166122436523, -89.97816467285156, 29.4411678314209),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_CRMS_2008': {},
     'stations': [{
         'CRMS_BA04-07': {
@@ -16675,17 +16678,17 @@ var obs = [{
     'temporal': ['2008-08-01T00:00:00', '2008-10-01T00:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CRMS_2008.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.82479858398438, 29.037832260131836, -89.1341781616211, 30.405597686767578),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_CRMS_2008': {},
     'stations': [{
         'CRMS_BA04-07': {
@@ -18522,17 +18525,17 @@ var obs = [{
     'temporal': ['2008-08-01T00:00:00', '2008-09-30T23:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CRMS_2008.F.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.76056671142578, 29.11429786682129, -89.1341781616211, 30.396102905273438),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_CRMS_2008': {},
     'stations': [{
         'CRMS_BA04-07': {
@@ -20369,17 +20372,17 @@ var obs = [{
     'temporal': ['2008-09-08T00:10:00', '2008-09-16T00:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CRMS_2008.F.C_mod_base_cycle_5.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.76056671142578, 29.11429786682129, -89.1341781616211, 30.396102905273438),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_CRMS_2008': {},
     'stations': [{
         'CRMS_BA04-07': {
@@ -22216,17 +22219,17 @@ var obs = [{
     'temporal': ['2008-08-01T00:00:00', '2008-09-30T23:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CRMS_2008.F.C.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.76056671142578, 29.11429786682129, -89.1341781616211, 30.396102905273438),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'CRMS_BA04-07': {
             'temporal': ['2005-08-01T00:00:00', '2005-08-09T09:59:59'],
@@ -22683,17 +22686,17 @@ var obs = [{
     'temporal': ['2005-08-01T00:00:00', '2005-08-09T09:59:59'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CRMS_2005.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.60722351074219, 29.12287139892578, -89.61129760742188, 30.03416633605957),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'CRMS_BA04-17': {
             'temporal': ['2005-08-01T00:00:00', '2005-09-30T23:00:00'],
@@ -22940,17 +22943,17 @@ var obs = [{
     'temporal': ['2005-08-01T00:00:00', '2005-09-30T23:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CRMS_2005.F.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.60722351074219, 29.280555725097656, -89.64575958251953, 30.03416633605957),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'stations': [{
         'CRMS_BA04-17': {
             'temporal': ['2005-08-01T00:00:00', '2005-09-30T23:00:00'],
@@ -23197,17 +23200,17 @@ var obs = [{
     'temporal': ['2005-08-01T00:00:00', '2005-09-30T23:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CRMS_2005.F.C.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.60722351074219, 29.280555725097656, -89.64575958251953, 30.03416633605957),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_CRMS': {},
     'stations': [{
         'CRMS_BA04-07': {
@@ -23629,17 +23632,17 @@ var obs = [{
     'temporal': ['2005-09-01T05:00:00', '2005-10-01T05:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CRMS.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.60722351074219, 29.12287139892578, -89.61129760742188, 30.03416633605957),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_CRMS': {},
     'stations': [{
         'CRMS_BA04-17': {
@@ -23886,17 +23889,17 @@ var obs = [{
     'temporal': ['2005-09-01T05:00:00', '2005-10-01T03:59:59'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CRMS.F.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.60722351074219, 29.280555725097656, -89.64575958251953, 30.03416633605957),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_CRMS': {},
     'stations': [{
         'CRMS_BA04-17': {
@@ -24143,17 +24146,17 @@ var obs = [{
     'temporal': ['2005-09-01T05:00:00', '2005-10-01T03:59:59'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CRMS.F.C.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.60722351074219, 29.280555725097656, -89.64575958251953, 30.03416633605957),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }, {
     'category': 'inundation_tropical',
+    'layers': {
+        'watlev': 'OBSERVATION'
+    },
     'watlev_CRMS': {},
     'stations': [{
         'CRMS_BA04-07': {
@@ -26600,13 +26603,10 @@ var obs = [{
     'temporal': ['2008-08-01T05:00:00', '2008-10-01T05:00:00'],
     'getObs': {
         'url': 'http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CRMS.C.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22',
-        'offering': 'urn:tds:station.sos:',
-        'procedure ': 'urn:tds:station.sos:'
+        'procedure': 'urn:tds:station.sos:',
+        'offering': 'urn:tds:station.sos:'
     },
     'storm': '',
     'spatial': (-93.82479858398438, 29.037832260131836, -89.1341781616211, 30.405597686767578),
-    'org_model': 'OBSERVATIONS ',
-    'layers  ': {
-        'watlev': 'OBSERVATION'
-    }
+    'org_model': 'OBSERVATIONS'
 }];
