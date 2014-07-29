@@ -264,10 +264,10 @@ function syncQueryResults() {
   _.each(_.sortBy(c,function(o){return o.name.toUpperCase()}),function(o) {
     var layers = [];
     _.each(_.keys(o.layers).sort(),function(l) {
-      if (!name2Color[o.category + l]) {
-        name2Color[o.category + l] = buttonClasses[_.size(name2Color) % buttonClasses.length];
+      if (!name2Color[l]) {
+        name2Color[l] = buttonClasses[_.size(name2Color) % buttonClasses.length];
       }
-      layers.push('<a href="#" data-name="' + l + '" class="btn btn-' + name2Color[o.category + l] + '">' + l + '</a>');
+      layers.push('<a href="#" data-name="' + l + '" class="btn btn-' + name2Color[l] + '">' + l + '</a>');
     });
     var tSpan = '';
     var minT = o.temporal[0];
