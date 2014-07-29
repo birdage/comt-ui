@@ -92,8 +92,8 @@ function addToMap() {
     $.each($('#active-layers table tbody tr td:first-child'),function() {
       times = times.concat(map.getLayersByName($(this).text())[0].times);
     });
-    times.sort();
     if (times.length > 1) {
+      times.sort();
       var startDate = isoDateToDate(times[0]);
       var endDate = isoDateToDate(times[times.length - 1]);
       $('#time-slider').data('slider').min = startDate.getTime();
