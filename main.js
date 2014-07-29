@@ -70,6 +70,7 @@ function filterValueSelect() {
 function addToMap() {
   var c = catalog[$(this).parent().parent().children('td:first-child').data('idx')];
   var lyrName = $(this).data('name');
+  var obs = false;
   var lc = 0;
   if (_.isEmpty(map.getLayersByName(c.name + '-' + lyrName))) {
     if (!mapDate) {
@@ -86,6 +87,7 @@ function addToMap() {
         ,getObs   : c.getObs
         ,stations : c.stations
       });
+      obs = true;
     }
     else {
       lyrName = addWMS({
@@ -117,7 +119,8 @@ function addToMap() {
       $('#time-slider-max').val(endDate.format('UTC:yyyy-mm-dd'));
     }
 
-    var rowHtml = '<tr data-toggle="tooltip" data-placement="right" data-html="true" title="<img src=\'http://comt.sura.org:8080/wms/datasets/inundation_extratropical_UMASS_FVCOM_2007_3D_final_run_without_waves/?ELEVATION=1&LAYERS=xc&TRANSPARENT=TRUE&STYLES=facets_average_jet_0_0.5_node_False&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetLegendGraphic&FORMAT=image%2Fpng&TIME=2007-04-01T00:00:00Z/2007-05-01T00:00:00Z&LAYER=xc\' alt=\'\'>"><td title="' + lyrName + '"><div>' + lyrName + '<a href="#" title="View Data" data-name="' + lyrName + '"><img src="./img/view_data.png" /></a></div></td>';
+    var title = obs ? '' : 'title="<img src=\'' + getLayerLegend(lyrName) + '\' alt=\'\'>"';
+    var rowHtml = '<tr data-toggle="tooltip" data-placement="right" data-html="true" ' + title + '><td title="' + lyrName + '"><div>' + lyrName + '<a href="#" title="View Data" data-name="' + lyrName + '"><img src="./img/view_data.png" /></a></div></td>';
     rowHtml += '<td class="checkbox-cell"><input type="checkbox" checked value="' + lyrName + '" /></td>';
     $('#active-layers table tbody').append(rowHtml);
     $('#active-layers input:checkbox').off('click');
