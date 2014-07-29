@@ -108,6 +108,10 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 	overflow-x	: hidden;
 }
 
+.table-wrapper .tooltip-inner {
+	background-color: #fff;
+}
+
 #results div.title a {
 	color: #333;
 }

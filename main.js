@@ -103,7 +103,7 @@ function addToMap() {
       $('#time-slider-max').val(endDate.format('UTC:yyyy-mm-dd'));
     }
 
-    var rowHtml = '<tr><td title="' + lyrName + '"><div>' + lyrName + '<a href="#" title="View Data" data-name="' + lyrName + '"><img src="./img/view_data.png" /></a></div></td>';
+    var rowHtml = '<tr data-toggle="tooltip" data-placement="right" data-html="true" title="<img src=\'http://comt.sura.org:8080/wms/datasets/inundation_extratropical_UMASS_FVCOM_2007_3D_final_run_without_waves/?ELEVATION=1&LAYERS=xc&TRANSPARENT=TRUE&STYLES=facets_average_jet_0_0.5_node_False&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetLegendGraphic&FORMAT=image%2Fpng&TIME=2007-04-01T00:00:00Z/2007-05-01T00:00:00Z&LAYER=xc\' alt=\'\'>"><td title="' + lyrName + '"><div>' + lyrName + '<a href="#" title="View Data" data-name="' + lyrName + '"><img src="./img/view_data.png" /></a></div></td>';
     rowHtml += '<td class="checkbox-cell"><input type="checkbox" checked value="' + lyrName + '" /></td>';
     $('#active-layers table tbody').append(rowHtml);
     $('#active-layers input:checkbox').off('click');
@@ -229,6 +229,7 @@ $(document).ready(function(){
   $('#active-layers button').on('click', clearMap);
   $('#clear-query').on('click', clearQuery);
   $('div.btn-group.bootstrap-select').css('width', $('ul.dropdown-menu.inner.selectpicker li').css('width'));
+  $('#active-layers div table tbody').tooltip({selector: 'tr'});
 
   var prevPt;
   $('#time-series-graph').bind('plothover',function(event,pos,item) {
