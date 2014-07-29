@@ -92,6 +92,7 @@ function addToMap() {
     $.each($('#active-layers table tbody tr td:first-child'),function() {
       times = times.concat(map.getLayersByName($(this).text())[0].times);
     });
+    times.sort();
     if (times.length > 1) {
       var startDate = isoDateToDate(times[0]);
       var endDate = isoDateToDate(times[times.length - 1]);
