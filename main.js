@@ -75,14 +75,28 @@ function addToMap() {
     if (!mapDate) {
       mapDate = isoDateToDate(c.temporal[0]);
     }
-    lyrName = addWMS({
-       group  : c.name
-      ,url    : c.url
-      ,layers : lyrName
-      ,styles : c.layers[lyrName]
-      ,times  : c.temporal
-      ,bbox   : new OpenLayers.Bounds(c.spatial).transform(proj4326,proj3857)
-    });
+    var lyrName;
+    if (c.layers[lyrName] == 'OBSERVATION') {
+      lyrName = addObs({
+         group    : c.name
+        ,url      : c.url
+        ,layers   : lyrName
+        ,times    : c.temporal
+        ,bbox     : new OpenLayers.Bounds(c.spatial).transform(proj4326,proj3857)
+        ,getObs   : c.getObs
+        ,stations : c.stations
+      });
+    }
+    else {
+      lyrName = addWMS({
+         group  : c.name
+        ,url    : c.url
+        ,layers : lyrName
+        ,styles : c.layers[lyrName]
+        ,times  : c.temporal
+        ,bbox   : new OpenLayers.Bounds(c.spatial).transform(proj4326,proj3857)
+      });
+    }
     lc++;
   }
 
@@ -170,7 +184,10 @@ $(document).ready(function(){
 
   map.events.register('addlayer',this,function(e) {
     // keep important stuff on top
-    map.setLayerIndex(e.layer,map.layers.length - 2);
+    map.setLayerIndex(lyrQuery,map.layers.length - 1);
+    _.each(_.filter(map.layers,function(o){return o.renderer && o.name != 'Query points'}),function(o) {
+      map.setLayerIndex(o,map.layers.length - 2);
+    });
   });
 
   $.ajax({
@@ -180,7 +197,7 @@ $(document).ready(function(){
       // The catalog comes in as an array w/ each element containing one key (name) that points
       // to the payload.  Reduce the complexity by one and simply pump the catalog into an
       // array of objects where the name is one of the attrs.
-      _.each(r,function(o) {
+      _.each(r.concat(obs),function(o) {
         var d = _.values(o)[0];
         if (d && d.storm && d.category && !_.isEmpty(d.layers) && !_.isEmpty(d.temporal)) {
           d.name = _.keys(o)[0];
@@ -368,13 +385,55 @@ function addWMS(d) {
   lyr.group = d.group;
   lyr.times = d.times;
   lyr.bbox  = d.bbox;
+  lyr.activeQuery = 0;
   map.zoomToExtent(d.bbox);
 
   lyr.events.register('loadstart',this,function(e) {
     $('#active-layers a[data-name="' + e.object.name + '"] img').attr('src','./img/loading.gif');
   });
   lyr.events.register('loadend',this,function(e) {
-    if (!e.object.activeQuery) {
+    if (e.object.activeQuery == 0) {
+      $('#active-layers a[data-name="' + e.object.name + '"] img').attr('src','./img/view_data.png');
+    }
+  });
+  map.addLayer(lyr);
+  return lyr.name;
+}
+
+function addObs(d) {
+  var lyr = new OpenLayers.Layer.Vector(
+     d.group + '-' + d.layers
+  );
+  lyr.group = d.group;
+  lyr.times = d.times;
+  lyr.bbox  = d.bbox;
+  lyr.activeQuery = 0;
+  map.zoomToExtent(d.bbox);
+
+  var features = [];
+  _.each(d.stations,function(o) {
+    var v = _.values(o)[0];
+    var k = _.keys(o)[0];
+    var f = new OpenLayers.Feature.Vector(
+      new OpenLayers.Geometry.Point(v.spatial[0],v.spatial[1]).transform(proj4326,proj3857)
+    );
+    features.push(f);
+    f.attributes = {
+      getObs : d.getObs.url 
+        + '&offering=' + d.getObs.offering + k
+        + '&procedure=' + d.getObs.procedure + k
+        + '&observedProperty=' + d.getObs.property
+        + '&eventTime=' + isoDateToDate(d.times[0]).format('UTC:yyyy-mm-dd"T"HH:00:00') + '/' + isoDateToDate(d.times[1]).format('UTC:yyyy-mm-dd"T"HH:00:00')
+      ,name : k
+    };
+  });
+  lyr.addFeatures(features);
+
+  lyr.events.register('loadstart',this,function(e) {
+    $('#active-layers a[data-name="' + e.object.name + '"] img').attr('src','./img/loading.gif');
+  });
+  lyr.events.register('loadend',this,function(e) {
+    if (e.object.activeQuery == 0) {
       $('#active-layers a[data-name="' + e.object.name + '"] img').attr('src','./img/view_data.png');
     }
   });
@@ -430,10 +489,71 @@ function clearQuery() {
 function query(xy) {
   plotData = [];
   var lonLat = map.getLonLatFromPixel(xy);
-  var f = new OpenLayers.Feature.Vector(
-    new OpenLayers.Geometry.Point(lonLat.lon,lonLat.lat)
-  );
+  var pt = new OpenLayers.Geometry.Point(lonLat.lon,lonLat.lat);
+  var f  = new OpenLayers.Feature.Vector(pt);
   lyrQuery.addFeatures([f]);
+
+  _.each(_.filter(map.layers,function(o){return o.features && o.features.length > 0 && o.features[0].attributes && o.features[0].attributes.getObs && o.visibility}),function(l) {
+    // find the closest site w/i a tolerance
+    var f;
+    var minD;
+    _.each(l.features,function(o) {
+      var d = pt.distanceTo(o.geometry.getCentroid());
+      if (d <= 10000) {
+        if (_.isUndefined(minD) || d < minD) {
+          f = o.clone();
+        }
+        minD = d;
+      }
+    });
+    if (f) {
+      console.log(f.attributes.getObs);
+      l.events.triggerEvent('loadstart');
+      l.activeQuery++;
+      $.ajax({
+         url      : 'get.php?' + f.attributes.getObs
+        ,title    : l.name
+        ,success  : function(r) {
+          var lyr = map.getLayersByName(this.title)[0];
+          if (lyr) {
+            lyr.activeQuery--;
+            lyr.events.triggerEvent('loadend');
+          }
+          var xmlDoc = $.parseXML(r);
+          var $xml = $(xmlDoc);
+          var d = {
+             data  : []
+            ,label : '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' (' + $xml.find('uom').attr('code') + ')' + '</a>'
+          };
+          var values = $xml.find('values').text().split(" \n");
+          _.each($xml.find('values').text().split(" \n"),function(o) {
+            var a = o.split(',');
+            if (a.length == 2) {
+              d.data.push([isoDateToDate(a[0]).getTime(),a[1]]);
+            }
+          });
+          d.color = lineColors[plotData.length % lineColors.length][0];
+          plotData.push(d);
+          plot();
+        }
+        ,error    : function(r) {
+          var lyr = map.getLayersByName(this.title)[0];
+          if (lyr) {
+            lyr.activeQuery--;
+            lyr.events.triggerEvent('loadend');
+          }
+          var d = {
+             data  : []
+            ,label : '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' <font color=red><b>ERROR</b></font>'
+          };
+          d.color = lineColors[plotData.length % lineColors.length][0];
+          plotData.push(d);
+          plot();
+        }
+      });
+    }
+  });
+
   _.each(_.filter(map.layers,function(o){return o.DEFAULT_PARAMS && o.visibility}),function(l) {
     l.events.triggerEvent('loadstart');
     var u = l.getFullRequestString({
@@ -447,7 +567,7 @@ function query(xy) {
       ,Y            : Math.round(xy.y)
       ,TIME         : new Date($('#time-slider').data('slider').min).format('UTC:yyyy-mm-dd"T"HH:00:00') + '/' + new Date($('#time-slider').data('slider').max).format('UTC:yyyy-mm-dd"T"HH:00:00')
     });
-    l.activeQuery = true;
+    l.activeQuery++;
     $.ajax({
        url      : u
       ,dataType : 'jsonp'
@@ -458,7 +578,7 @@ function query(xy) {
         _gaq.push(['_trackEvent','query layer - OK',this.title]);
         var lyr = map.getLayersByName(this.title)[0];
         if (lyr) {
-          lyr.activeQuery = false;
+          lyr.activeQuery--;
           lyr.events.triggerEvent('loadend');
         }
         // special case for u,v
@@ -498,7 +618,7 @@ function query(xy) {
         _gaq.push(['_trackEvent','query layer - ERROR',this.title]);
         var lyr = map.getLayersByName(this.title)[0];
         if (lyr) {
-          lyr.activeQuery = false;
+          lyr.activeQuery--;
           lyr.events.triggerEvent('loadend');
         }
         var d = {
