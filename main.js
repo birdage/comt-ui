@@ -195,7 +195,7 @@ $(document).ready(function(){
   });
 
   $.ajax({
-     url           : 'comt.jsonp' // 'http://comt.sura.org:8080/wms/datasets'
+     url           : 'http://comt.sura.org:8080/wms/datasets'
     ,dataType      : 'jsonp'
     ,jsonpCallback : 'foo'
     ,success       : function(r) {
