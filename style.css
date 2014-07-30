@@ -338,6 +338,7 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 	top			: 0;
 	right		: -75px;
 	margin-top	: 130px;
+	display		: none;
 }
 
 .slider.slider-vertical .tooltip.right {
