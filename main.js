@@ -529,7 +529,6 @@ function query(xy) {
       }
     });
     if (f) {
-      console.log(f.attributes.getObs);
       l.events.triggerEvent('loadstart');
       l.activeQuery++;
       $.ajax({
@@ -547,13 +546,29 @@ function query(xy) {
              data  : []
             ,label : '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' (' + $xml.find('uom').attr('code') + ')' + '</a>'
           };
+          var z = [];
           var values = $xml.find('values').text().split(" \n");
           _.each($xml.find('values').text().split(" \n"),function(o) {
             var a = o.split(',');
-            if (a.length == 2) {
-              d.data.push([isoDateToDate(a[0]).getTime(),a[1]]);
+            if ((a.length == 2 || a.length == 3) && $.isNumeric(a[1])) {
+              // only take the 1st value for each time
+              var t = isoDateToDate(a[0]).getTime();
+              if (!_.find(d.data,function(o){return o[0] == t})) {
+                d.data.push([t,a[1]]);
+                if (a.length == 3) {
+                  z.push(a[2]);
+                }
+              }
             }
           });
+          if (!_.isEmpty(z)) {
+            z = _.uniq(z.sort(function(a,b){return a-b}),true);
+            d.label = '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' [' + $($xml.find('field')[2]).attr('name') + ' ' + z[0];
+            if (z.length > 1) {
+              d.label += ' - ' + z[z.length - 1];
+            }
+            d.label += '] (' + $xml.find('uom').attr('code') + ')' + '</a>';
+          }
           d.color = lineColors[plotData.length % lineColors.length][0];
           plotData.push(d);
           plot();

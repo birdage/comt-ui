@@ -26668,3 +26668,22 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }];
+
+obs.push({'MAGMIX_X3' : {
+   category : 'shelf_hypoxia'
+  ,layers   : {oxy : 'OBSERVATION','salt' : 'OBSERVATION','temp' : 'OBSERVATION','chl' : 'OBSERVATION'}
+  ,stations : [{X3 : {
+    'temporal' : ['2008-05-01T18:31:55','2009-07-28T19:06:17']
+    ,'spatial' : [-92.75050,29.40820] 
+  }}]
+  ,url : 'http://testbedapps-dev.sura.org/thredds/catalog/shelf_hypoxia/observations/magmix/catalog.html?dataset=shelf_hypoxia/observations/magmix/MAGMIX_X3.nc'
+  ,getObs : {
+    'url': 'http://testbedapps-dev.sura.org/thredds/sos/shelf_hypoxia/observations/magmix/MAGMIX_X3.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22'
+    ,'procedure': 'urn:tds:station.sos:'
+    ,'offering': 'urn:tds:station.sos:'
+  }
+  ,storm : '2005'
+  ,spatial : [-92.75050,29.40820,-92.75050,29.40820]
+  ,'temporal' : ['2008-05-01T18:31:55','2009-07-28T19:06:17']
+  ,'org_model': 'OBSERVATIONS'
+}});
