@@ -55,6 +55,7 @@ function resize() {
 window.onresize = resize;
 
 function categoryClick() {
+  syncFilters($('#categories.btn-group input:checked').attr('id'));
   syncQueryResults();
 }
 
@@ -194,9 +195,10 @@ $(document).ready(function(){
   });
 
   $.ajax({
-     url : 'http://comt.sura.org:8080/wms/datasets'
-    ,dataType : 'jsonp'
-    ,success : function(r) {
+     url           : 'comt.jsonp' // 'http://comt.sura.org:8080/wms/datasets'
+    ,dataType      : 'jsonp'
+    ,jsonpCallback : 'foo'
+    ,success       : function(r) {
       // The catalog comes in as an array w/ each element containing one key (name) that points
       // to the payload.  Reduce the complexity by one and simply pump the catalog into an
       // array of objects where the name is one of the attrs.
@@ -211,20 +213,16 @@ $(document).ready(function(){
 
       // Populate the options.
       var i = 0;
+      var cat;
       _.each(_.sortBy(_.uniq(_.pluck(catalog,'category')),function(o){return o.toUpperCase()}),function(o) {
+        if (i == 0) {
+          cat = o;
+        }
         $('#categories').append('<label class="btn btn-default ' + (i == 0 ? 'active' : '') + '"><input type="radio" name="categories" id="' + o + '" ' + (i == 0 ? 'checked' : '') + '>' + o + '</label>');
         i++;
       });
 
-      _.each(_.sortBy(_.uniq(_.pluck(catalog,'storm')),function(o){return o.toUpperCase()}),function(o) {
-        $('#event-list').append('<option value="' + o + '">' + o + '</option>');
-      });
-       $('#event-list').selectpicker('refresh');
-
-      _.each(_.sortBy(_.uniq(_.pluck(catalog,'org_model')),function(o){return o.toUpperCase()}),function(o) {
-        $('#model-list').append('<option value="' + o + '">' + o + '</option>');
-      });
-      $('#model-list').selectpicker('refresh');
+      syncFilters(cat);
 
       $('#categories.btn-group input').on('change', categoryClick);
       syncQueryResults();
@@ -273,6 +271,22 @@ $(document).ready(function(){
     }
   });
 });
+
+function syncFilters(cat) {
+  $('#event-list').empty();
+  $('#event-list').append('<option checked value="' + 'ALL' + '">' + 'ALL' + '</option>');
+  _.each(_.sortBy(_.uniq(_.pluck(_.filter(catalog,function(o){return o.category == cat}),'storm')),function(o){return o.toUpperCase()}),function(o) {
+    $('#event-list').append('<option value="' + o + '">' + o + '</option>');
+  });
+   $('#event-list').selectpicker('refresh');
+
+  $('#model-list').empty();
+  $('#model-list').append('<option checked value="' + 'ALL' + '">' + 'ALL' + '</option>');
+  _.each(_.sortBy(_.uniq(_.pluck(_.filter(catalog,function(o){return o.category == cat}),'org_model')),function(o){return o.toUpperCase()}),function(o) {
+    $('#model-list').append('<option value="' + o + '">' + o + '</option>');
+  });
+  $('#model-list').selectpicker('refresh');
+}
 
 function syncQueryResults() {
   $('#query-results tbody').empty();
