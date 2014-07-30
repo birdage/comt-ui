@@ -332,3 +332,18 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 .olImageLoadError {
 	display: none;
 }
+
+.slider.slider-vertical {
+	position	: absolute;
+	top			: 0;
+	right		: -75px;
+	margin-top	: 130px;
+}
+
+.slider.slider-vertical .tooltip.right {
+	left: 55% !important;
+}
+
+.slider.slider-vertical .slider-track {
+	background: #BABABA;
+}

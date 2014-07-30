@@ -239,7 +239,9 @@ $(document).ready(function(){
   $('#time-slider').slider().on('slideStop',function(e) {
     setDate(new Date($(this).data('slider').getValue()));
   });
-
+  $('#depth-slider').slider({
+    orientation: 'vertical'
+  });
 
   resize();
   $('.selectpicker').selectpicker({width:'auto'}).on('change', filterValueSelect);
