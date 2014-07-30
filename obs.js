@@ -26671,7 +26671,7 @@ var obs = [{
 
 obs.push({'MAGMIX_X3' : {
    category : 'shelf_hypoxia'
-  ,layers   : {oxy : 'OBSERVATION','salt' : 'OBSERVATION','temp' : 'OBSERVATION','chl' : 'OBSERVATION'}
+  ,layers   : {oxy : 'OBSERVATION','salt' : 'OBSERVATION','temp' : 'OBSERVATION'}
   ,stations : [{X3 : {
     'temporal' : ['2008-05-01T18:31:55','2009-07-28T19:06:17']
     ,'spatial' : [-92.75050,29.40820] 
