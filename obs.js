@@ -921,7 +921,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_USGS-PERM': {
+    'watlev_USGS-PERM.F': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -1289,7 +1289,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_USGS-PERM': {
+    'watlev_USGS-PERM.F.C_mod_base_cycle_5': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -1807,7 +1807,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_USGS-PERM': {
+    'watlev_USGS-PERM.F.C': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -2175,7 +2175,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_USGS-PERM': {
+    'watlev_USGS-PERM.C': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -2346,7 +2346,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_USGS-DEPL_surge': {
+    'watlev_USGS-DEPL_surge.F': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -2494,7 +2494,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_USGS-DEPL_surge': {
+    'watlev_USGS-DEPL_surge.F.C': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -3096,7 +3096,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_USGS-DEPL': {
+    'watlev_USGS-DEPL.F': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -3409,7 +3409,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_USGS-DEPL': {
+    'watlev_USGS-DEPL.F.C_mod_base_cycle_5': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -3722,7 +3722,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_USGS-DEPL': {
+    'watlev_USGS-DEPL.F.C': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -4035,7 +4035,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_USGS-DEPL': {
+    'watlev_USGS-DEPL.C': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -4348,7 +4348,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_USGS-DEPL': {
+    'watlev_USGS-DEPL.C.F': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -4924,7 +4924,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_USACE': {
+    'watlev_USACE.F': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -5197,7 +5197,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_USACE': {
+    'watlev_USACE.F.C_mod_base_cycle_5': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -5470,7 +5470,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_USACE': {
+    'watlev_USACE.F.C': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -5839,7 +5839,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_USACE-CHL': {
+    'watlev_USACE-CHL.F': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -6166,7 +6166,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_TCOON': {
+    'watlev_TCOON.F': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -6329,7 +6329,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_TCOON': {
+    'watlev_TCOON.F.C_mod_base_cycle_5': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -6492,7 +6492,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_TCOON': {
+    'watlev_TCOON.F.C': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -9553,7 +9553,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_NOAA': {
+    'watlev_NOAA.F': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -10071,7 +10071,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_NOAA': {
+    'watlev_NOAA.F.C_mod_base_cycle_5': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -10624,7 +10624,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_NOAA': {
+    'watlev_NOAA.F.C': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -14232,7 +14232,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_CSI': {
+    'watlev_CSI.F': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -16733,7 +16733,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_CRMS_2008': {
+    'watlev_CRMS_2008.F': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -18581,7 +18581,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_CRMS_2008': {
+    'watlev_CRMS_2008.F.C_mod_base_cycle_5': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -20429,7 +20429,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_CRMS_2008': {
+    'watlev_CRMS_2008.F.C': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -22745,7 +22745,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_CRMS_2005': {
+    'watlev_CRMS_2005.F': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -23003,7 +23003,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_CRMS_2005': {
+    'watlev_CRMS_2005.F.C': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -23694,7 +23694,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_CRMS': {
+    'watlev_CRMS.F': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -23952,7 +23952,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_CRMS': {
+    'watlev_CRMS.F.C': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
@@ -24210,7 +24210,7 @@ var obs = [{
         'org_model': 'OBSERVATIONS'
     }
 }, {
-    'watlev_CRMS': {
+    'watlev_CRMS.C': {
         'category': 'inundation_tropical',
         'layers': {
             'watlev': 'OBSERVATION'
