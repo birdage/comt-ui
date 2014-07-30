@@ -139,7 +139,7 @@ function addToMap() {
     }
   }
   else {
-    alert('Oops.  This dataset is already on your map.');
+    console.log("remove it again")
   }
 }
 
@@ -246,7 +246,7 @@ $(document).ready(function(){
   resize();
   $('.selectpicker').selectpicker({width:'auto'}).on('change', filterValueSelect);
   $('.btn').button().mouseup(function(){$(this).blur();});
-  $('#active-layers button').on('click', clearMap);
+  $('#clearMap').on('click', clearMap);
   $('#clear-query').on('click', clearQuery);
   $('div.btn-group.bootstrap-select').css('width', $('ul.dropdown-menu.inner.selectpicker li').css('width'));
   $('#active-layers div table tbody').tooltip({selector: 'tr'});
@@ -321,7 +321,7 @@ function syncQueryResults() {
       return false;
     else {
       $('#mapView, #map-view-col, #map-col').hide();
-      $('#catalogue').show();
+      $('#catalog').show();
       $('li.active').removeClass('active');
       $(this).parent().addClass('active');
       resize();
@@ -333,7 +333,7 @@ function syncQueryResults() {
     if ($(this).hasClass('active'))
       return false;
     else {
-      $('#catalogue').hide();
+      $('#catalog').hide();
       $('#mapView, #map-view-col, #map-col').show();
       $('li.active').removeClass('active');
       $(this).parent().addClass('active');

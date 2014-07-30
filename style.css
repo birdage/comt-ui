@@ -78,7 +78,7 @@ ul.nav li:last-child.active a {
 	text-align: center;
 }
 
-#catalogue .btn-group.bootstrap-select {
+#catalog .btn-group.bootstrap-select {
 	margin: 0 8px;
 }
 
@@ -243,7 +243,7 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 }
 
 #map {
-	border: 1px solid #edece8;
+	border: 2px solid #edece8;
 	height: 100%;
 }
 
@@ -252,7 +252,6 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 }
 
 #map-view-col {
-	display: none;
 }
 
 .slider {
