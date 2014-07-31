@@ -457,7 +457,7 @@ function addObs(d) {
   $.ajax({
      url      : 'obs/' + d.group + '.json' + '?' + new Date().getTime() + Math.random()
     ,dataType : 'json'
-    ,lyr      : lyr
+    ,lyr      : lyr.name
     ,success  : function(r) {
       var features = [];
       _.each(r.stations,function(o) {
@@ -476,7 +476,10 @@ function addObs(d) {
           ,name : k
         };
       });
-      this.lyr.addFeatures(features);
+      var lyr = map.getLayersByName(this.lyr)[0];
+      if (lyr) {
+        lyr.addFeatures(features); 
+      }
     }
   });
 
@@ -646,7 +649,7 @@ function query(xy) {
       ,dataType : 'jsonp'
       ,v        : l.params.LAYERS
       ,title    : l.name
-      ,timeout  : 30000 // JSONP won't trap errors natively, so use a timeout.
+      ,timeout  : 60000 // JSONP won't trap errors natively, so use a timeout.
       ,success  : function(r) {
         _gaq.push(['_trackEvent','query layer - OK',this.title]);
         var lyr = map.getLayersByName(this.title)[0];
