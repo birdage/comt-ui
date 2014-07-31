@@ -1,0 +1,21 @@
+{
+    "getObs": {
+        "offering": "",
+        "procedure": "urn:tds:station.sos:",
+        "url": "http://testbedapps-dev.sura.org/thredds/sos/observations/mch/MCH_m4t46.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22"
+    },
+    "stations": [
+        {
+            "m": {
+                "spatial": [
+                    -89.8144,
+                    29.057
+                ],
+                "temporal": [
+                    "2005-03-29T14:43:59",
+                    "2005-03-29T14:45:00"
+                ]
+            }
+        }
+    ]
+}

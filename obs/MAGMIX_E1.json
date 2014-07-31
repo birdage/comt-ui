@@ -1,0 +1,21 @@
+{
+    "getObs": {
+        "offering": "",
+        "procedure": "urn:tds:station.sos:",
+        "url": "http://testbedapps-dev.sura.org/thredds/sos/observations/magmix/MAGMIX_E1.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22"
+    },
+    "stations": [
+        {
+            "E": {
+                "spatial": [
+                    -90.2208,
+                    28.7662
+                ],
+                "temporal": [
+                    "2008-11-06T12:27:30",
+                    "2008-11-06T12:27:30"
+                ]
+            }
+        }
+    ]
+}

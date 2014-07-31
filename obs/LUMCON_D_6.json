@@ -1,0 +1,21 @@
+{
+    "getObs": {
+        "offering": "",
+        "procedure": "urn:tds:station.sos:",
+        "url": "http://testbedapps-dev.sura.org/thredds/sos/observations/lumcon/LUMCON_D_6.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22"
+    },
+    "stations": [
+        {
+            "D": {
+                "spatial": [
+                    -91.6162,
+                    29.0508
+                ],
+                "temporal": [
+                    "2006-07-23T00:00:00",
+                    "2006-07-24T23:40:59"
+                ]
+            }
+        }
+    ]
+}
