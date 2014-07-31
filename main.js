@@ -557,7 +557,7 @@ function query(xy) {
       l.events.triggerEvent('loadstart');
       l.activeQuery++;
       $.ajax({
-         url      : 'get.php?' + f.attributes.getObs
+         url      : f.attributes.getObs
         ,title    : l.name
         ,success  : function(r) {
           var lyr = map.getLayersByName(this.title)[0];
