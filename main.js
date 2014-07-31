@@ -490,6 +490,9 @@ function addObs(d) {
       $('#active-layers a[data-name="' + e.object.name + '"] span').show();
     }
   });
+  lyr.events.register('visibilitychanged',this,function(e) {
+    syncTimeSlider();
+  });
   map.addLayer(lyr);
   return lyr.name;
 }
