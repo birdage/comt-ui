@@ -518,7 +518,10 @@ function zoomToLayer(name) {
 function setDate(dt) {
   mapDate = dt;
   $.each($('#active-layers table tbody tr td:first-child'),function() {
-    map.getLayersByName($(this).text())[0].mergeNewParams({TIME : mapDate.format('UTC:yyyy-mm-dd"T"HH:00:00')});
+    var lyr = map.getLayersByName($(this).text())[0];
+    if (lyr.DEFAULT_PARAMS) {
+      lyr.mergeNewParams({TIME : mapDate.format('UTC:yyyy-mm-dd"T"HH:00:00')});
+    }
   });
   plot();
 }
