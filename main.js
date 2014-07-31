@@ -77,18 +77,26 @@ function addToMap() {
     if (!mapDate) {
       mapDate = isoDateToDate(c.temporal[0]);
     }
-    var lyrName;
     if (c.layers[lyrName] == 'OBSERVATION') {
-      lyrName = addObs({
-         group    : c.name
-        ,url      : c.url
-        ,layers   : lyrName
-        ,times    : c.temporal
-        ,bbox     : new OpenLayers.Bounds(c.spatial).transform(proj4326,proj3857)
-        ,getObs   : c.getObs
-        ,stations : c.stations
-      });
       obs = true;
+      $.ajax({
+         url     : 'obs/' + c.name + '.json'
+        ,async   : false
+        ,success : function(r) {
+          lyrName = addObs({
+             group    : c.name
+            ,url      : c.url
+            ,layers   : lyrName
+            ,times    : c.temporal
+            ,bbox     : new OpenLayers.Bounds(c.spatial).transform(proj4326,proj3857)
+            ,getObs   : r.getObs
+            ,stations : r.stations
+          });
+        }
+        ,error  : function() {
+          lc = -999;
+        }
+      });
     }
     else {
       lyrName = addWMS({
@@ -139,8 +147,11 @@ function addToMap() {
       $('#time-slider-wrapper').toggle();
     }
   }
-  else {
+  else if (lc == 0) {
     alert('Oops.  This dataset is already on your map.');
+  }
+  else {
+    alert('Oops.  There was a problem accessing this dataset.');
   }
 }
 
