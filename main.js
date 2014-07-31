@@ -79,24 +79,12 @@ function addToMap() {
     }
     if (c.layers[lyrName] == 'OBSERVATION') {
       obs = true;
-      $.ajax({
-         url      : 'obs/' + c.name + '.json'
-        ,dataType : 'json'
-        ,async    : false
-        ,success  : function(r) {
-          lyrName = addObs({
-             group    : c.name
-            ,url      : c.url
-            ,layers   : lyrName
-            ,times    : c.temporal
-            ,bbox     : new OpenLayers.Bounds(c.spatial).transform(proj4326,proj3857)
-            ,getObs   : r.getObs
-            ,stations : r.stations
-          });
-        }
-        ,error  : function() {
-          lc = -999;
-        }
+      lyrName = addObs({
+         group    : c.name
+        ,url      : c.url
+        ,layers   : lyrName
+        ,times    : c.temporal
+        ,bbox     : new OpenLayers.Bounds(c.spatial).transform(proj4326,proj3857)
       });
     }
     else {
@@ -132,11 +120,8 @@ function addToMap() {
       $('#active-layers table thead th:last-child').css('width', '47px');
     }
   }
-  else if (lc == 0) {
-    alert('Oops.  This dataset is already on your map.');
-  }
   else {
-    alert('Oops.  There was a problem accessing this dataset.');
+    alert('Oops.  This dataset is already on your map.');
   }
 }
 
@@ -463,32 +448,39 @@ function addObs(d) {
   lyr.activeQuery = 0;
   map.zoomToExtent(d.bbox);
 
-  var features = [];
-  _.each(d.stations,function(o) {
-    var v = _.values(o)[0];
-    var k = _.keys(o)[0];
-    var f = new OpenLayers.Feature.Vector(
-      new OpenLayers.Geometry.Point(v.spatial[0],v.spatial[1]).transform(proj4326,proj3857)
-    );
-    features.push(f);
-    f.attributes = {
-      getObs : d.getObs.url 
-        + '&offering=' + d.getObs.offering + k
-        + '&procedure=' + d.getObs.procedure + k
-        + '&observedProperty=' + d.layers
-        + '&eventTime=' + isoDateToDate(d.times[0]).format('UTC:yyyy-mm-dd"T"HH:00:00') + '/' + isoDateToDate(d.times[1]).format('UTC:yyyy-mm-dd"T"HH:00:00')
-      ,name : k
-    };
+  $.ajax({
+     url      : 'obs/' + d.group + '.json'
+    ,dataType : 'json'
+    ,lyr      : lyr
+    ,success  : function(r) {
+      var features = [];
+      _.each(r.stations,function(o) {
+        var v = _.values(o)[0];
+        var k = _.keys(o)[0];
+        var f = new OpenLayers.Feature.Vector(
+          new OpenLayers.Geometry.Point(v.spatial[0],v.spatial[1]).transform(proj4326,proj3857)
+        );
+        features.push(f);
+        f.attributes = {
+          getObs : r.getObs.url
+            + '&offering=' + r.getObs.offering + k
+            + '&procedure=' + r.getObs.procedure + k
+            + '&observedProperty=' + d.layers
+            + '&eventTime=' + isoDateToDate(d.times[0]).format('UTC:yyyy-mm-dd"T"HH:00:00') + '/' + isoDateToDate(d.times[1]).format('UTC:yyyy-mm-dd"T"HH:00:00')
+          ,name : k
+        };
+      });
+      this.lyr.addFeatures(features);
+    }
   });
-  lyr.addFeatures(features);
 
   lyr.events.register('loadstart',this,function(e) {
     $('#active-layers a[data-name="' + e.object.name + '"] img').show();
-      $('#active-layers a[data-name="' + e.object.name + '"] span').hide();
+    $('#active-layers a[data-name="' + e.object.name + '"] span').hide();
   });
   lyr.events.register('loadend',this,function(e) {
     if (e.object.activeQuery == 0) {
-     $('#active-layers a[data-name="' + e.object.name + '"] img').hide();
+      $('#active-layers a[data-name="' + e.object.name + '"] img').hide();
       $('#active-layers a[data-name="' + e.object.name + '"] span').show();
     }
   });
