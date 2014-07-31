@@ -175,15 +175,21 @@ $(document).ready(function(){
     });
   });
 
-  $.ajax({
-     url           : 'http://comt.sura.org:8080/wms/datasets'
-    ,dataType      : 'jsonp'
-    ,jsonpCallback : 'foo'
-    ,success       : function(r) {
+  $.when(
+    $.ajax({
+       url           : 'http://comt.sura.org:8080/wms/datasets'
+      ,dataType      : 'jsonp'
+      ,jsonpCallback : 'foo'
+    })
+    ,$.ajax({
+       url           : 'obs.json?' + new Date().getTime() + Math.random()
+      ,dataType      : 'json'
+    })
+    ).done(function(model,obs) {
       // The catalog comes in as an array w/ each element containing one key (name) that points
       // to the payload.  Reduce the complexity by one and simply pump the catalog into an
       // array of objects where the name is one of the attrs.
-      _.each(r.concat(obs),function(o) {
+      _.each(model[0].concat(obs[0]),function(o) {
         var d = _.values(o)[0];
         if (d && d.storm && d.category && !_.isEmpty(d.layers) && !_.isEmpty(d.temporal)) {
           d.name = _.keys(o)[0];
@@ -208,7 +214,7 @@ $(document).ready(function(){
       $('#categories.btn-group input').on('change', categoryClick);
       syncQueryResults();
     }
-  });
+  );
 
   $('#time-slider').slider({
     step: 6 * 3600000,
