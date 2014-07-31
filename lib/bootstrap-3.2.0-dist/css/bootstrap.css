@@ -5799,9 +5799,9 @@ button.close {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1060;
+  z-index: 1071;
   display: none;
-  max-width: 276px;
+  /*max-width: 276px;*/
   padding: 1px;
   text-align: left;
   white-space: normal;

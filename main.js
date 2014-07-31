@@ -106,15 +106,15 @@ function addToMap() {
     syncTimeSlider(c.temporal);
 
     var title = obs ? '' : 'title="<img src=\'' + getLayerLegend(lyrName) + '\' alt=\'\'>"';
-    var rowHtml = '<tr data-toggle="tooltip" data-placement="right" data-html="true" ' + title + '><td title="' + lyrName + '"><div>' + lyrName + '<a href="#" title="Zoom To" data-name="' + lyrName + '"><span class="glyphicon glyphicon-zoom-in"></span><img src="./img/loading.gif"></a></div></td>';
+    var rowHtml = '<tr data-toggle="tooltip" data-placement="right" data-html="true" ' + title + '><td title="' + lyrName + '"><div>' + lyrName + '<a href="#" title="Zoom To" data-name="' + lyrName + '"><span class="glyphicon glyphicon-zoom-in"></span><img src="./img/loading.gif"></a><a href="#" class="popover-link" data-toggle="popover" title="' + lyrName + '" data-content="content..."><span class="glyphicon glyphicon-info-sign"></span></a></div></td>';
     rowHtml += '<td class="checkbox-cell"><input type="checkbox" checked value="' + lyrName + '" /></td>';
     $('#active-layers table tbody').append(rowHtml);
     $('#active-layers input:checkbox').off('click');
     $('#active-layers input:checkbox').click(function() { 
       toggleLayerVisibility(($(this).val()));
     });
-    $('#active-layers a').off('click');
-    $('#active-layers a').click(function() {
+    $('#active-layers a[title="Zoom To"]').off('click');
+    $('#active-layers a[title="Zoom To"]').click(function() {
       zoomToLayer(($(this).data('name')));
     });
     if (hasScrollBar($('#active-layers .table-wrapper')[0])) {
@@ -270,6 +270,7 @@ $(document).ready(function(){
   $('#clear-query').on('click', clearQuery);
   $('div.btn-group.bootstrap-select').css('width', $('ul.dropdown-menu.inner.selectpicker li').css('width'));
   $('#active-layers div table tbody').tooltip({selector: 'tr'});
+  $('#active-layers div table tbody').popover({selector: 'a.popover-link'});
 
   $('#time-series-graph').bind('plothover',function(event,pos,item) {
     if (item) {

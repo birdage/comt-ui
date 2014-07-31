@@ -121,8 +121,18 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 	margin-top	: 3px;
 }
 
+#active-layers .table-wrapper a span.glyphicon-info-sign {
+	font-size	: 18px;
+	margin-top	: 4px;
+}
+
+#active-layers .table-wrapper a.popover-link {
+	margin-right: 10px;
+}
+
 #active-layers .table-wrapper a img {
-	display: none;
+	display		: none;
+	margin-top	: 3px;
 }
 
 #results div.title a {
