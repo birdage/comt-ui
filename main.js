@@ -80,9 +80,10 @@ function addToMap() {
     if (c.layers[lyrName] == 'OBSERVATION') {
       obs = true;
       $.ajax({
-         url     : 'obs/' + c.name + '.json'
-        ,async   : false
-        ,success : function(r) {
+         url      : 'obs/' + c.name + '.json'
+        ,dataType : 'json'
+        ,async    : false
+        ,success  : function(r) {
           lyrName = addObs({
              group    : c.name
             ,url      : c.url
