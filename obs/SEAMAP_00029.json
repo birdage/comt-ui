@@ -1,0 +1,21 @@
+{
+    "getObs": {
+        "offering": "",
+        "procedure": "urn:tds:station.sos:",
+        "url": "http://testbedapps-dev.sura.org/thredds/sos/observations/seamap/SEAMAP_00029.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22"
+    },
+    "stations": [
+        {
+            "0": {
+                "spatial": [
+                    -93.4155,
+                    27.9845
+                ],
+                "temporal": [
+                    "2005-06-20T03:17:00",
+                    "2008-06-17T03:55:00"
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "getObs": {
+        "offering": "",
+        "procedure": "urn:tds:station.sos:",
+        "url": "http://testbedapps-dev.sura.org/thredds/sos/observations/epa/EPA_F03.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22"
+    },
+    "stations": [
+        {
+            "F": {
+                "spatial": [
+                    -90.8344,
+                    28.58
+                ],
+                "temporal": [
+                    "2004-04-05T16:27:00",
+                    "2007-08-21T22:07:59"
+                ]
+            }
+        }
+    ]
+}
