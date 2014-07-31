@@ -3,6 +3,7 @@ var lyrQuery;
 var mapDate;
 var catalog = [];
 var plotData = [];
+var prevPt;
 var proj3857 = new OpenLayers.Projection("EPSG:3857");
 var proj4326 = new OpenLayers.Projection("EPSG:4326");
 
@@ -238,7 +239,6 @@ $(document).ready(function(){
   $('div.btn-group.bootstrap-select').css('width', $('ul.dropdown-menu.inner.selectpicker li').css('width'));
   $('#active-layers div table tbody').tooltip({selector: 'tr'});
 
-  var prevPt;
   $('#time-series-graph').bind('plothover',function(event,pos,item) {
     if (item) {
       var x = new Date(item.datapoint[0]);
