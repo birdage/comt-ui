@@ -449,7 +449,7 @@ function addObs(d) {
   map.zoomToExtent(d.bbox);
 
   $.ajax({
-     url      : 'obs/' + d.group + '.json'
+     url      : 'obs/' + d.group + '.json' + '?' + new Date().getTime() + Math.random()
     ,dataType : 'json'
     ,lyr      : lyr
     ,success  : function(r) {
@@ -559,21 +559,20 @@ function query(xy) {
       $.ajax({
          url      : f.attributes.getObs
         ,title    : l.name
+        ,dataType : 'xml'
         ,success  : function(r) {
           var lyr = map.getLayersByName(this.title)[0];
           if (lyr) {
             lyr.activeQuery--;
             lyr.events.triggerEvent('loadend');
           }
-          var xmlDoc = $.parseXML(r);
-          var $xml = $(xmlDoc);
+          var $xml = $(r);
           var d = {
              data  : []
-            ,label : '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' (' + $xml.find('uom').attr('code') + ')' + '</a>'
+            ,label : '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' (' + $xml.find('uom[code]').attr('code') + ')' + '</a>'
           };
           var z = [];
-          var values = $xml.find('values').text().split(" \n");
-          _.each($xml.find('values').text().split(" \n"),function(o) {
+          _.each($xml.find('values').text().split(" "),function(o) {
             var a = o.split(',');
             if ((a.length == 2 || a.length == 3) && $.isNumeric(a[1])) {
               // only take the 1st value for each time
