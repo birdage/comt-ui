@@ -70,7 +70,7 @@ function filterValueSelect() {
 }
 
 function addToMap() {
-  var c = catalog[$(this).parent().parent().children('td:first-child').data('idx')];
+  var c = catalog[$(this).data('idx')];
   var lyrName = $(this).data('name');
   var obs = false;
   var lc = 0;
@@ -222,11 +222,11 @@ $(document).ready(function(){
             if (!name2Color[l]) {
               name2Color[l] = buttonClasses[_.size(name2Color) % buttonClasses.length];
             }
-            layers.push('<a href="#" data-name="' + l + '" class="btn btn-' + name2Color[l] + '">' + l + '</a>');
+            layers.push('<a href="#" data-idx="' + d.idx + '" data-name="' + l + '" class="btn btn-' + name2Color[l] + '">' + l + '</a>');
           });
 
           var thumb = '<img width=60 height=60 src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyBuB8P_e6vQcucjnE64Kh2Fwu6WzhMXZzI&path=weight:1|fillcolor:0x0000AA11|color:0x0000FFBB|' + d.spatial[1] + ',' + d.spatial[0] + '|' + d.spatial[1] + ',' + d.spatial[2] + '|' + d.spatial[3] + ',' + d.spatial[2] + '|' + d.spatial[3] + ',' + d.spatial[0] + '|' + d.spatial[1] + ',' + d.spatial[0] + '&size=60x60&sensor=false" title="Data boundaries" alt="Data boundaries">';
-          d.tr = '<tr id="row_' + i++ +'"><td title="' + d.name + '" data-idx="' + d.idx + '"><div class="thumbnail">' + thumb + '</div><div class="title">' + d.name + '</div><br /><div class="time-range"><div class="time-range-label"><span class="glyphicon glyphicon-time"></span>Time Range</div><input type="text" name="timeRange" value="' + d.tSpan + '" disabled class="form-control"></div><div class="download-data"><a target=_blank href="' + d.url + '" title="Download Data"><span class="glyphicon glyphicon-download"></span>Download Data</a></div>' + layers.join(', ') + '</td></tr>';
+          d.tr = ['<div class="thumbnail">' + thumb + '</div><div class="title">' + d.name + '</div><br /><div class="time-range"><div class="time-range-label"><span class="glyphicon glyphicon-time"></span>Time Range</div><input type="text" name="timeRange" value="' + d.tSpan + '" disabled class="form-control"></div><div class="download-data"><a target=_blank href="' + d.url + '" title="Download Data"><span class="glyphicon glyphicon-download"></span>Download Data</a></div>' + layers.join(', ')];
 
           catalog.push(d);
         }
@@ -246,6 +246,13 @@ $(document).ready(function(){
       syncFilters(cat);
 
       $('#categories.btn-group input').on('change', categoryClick);
+      $('#query-results').DataTable({
+         searching      : false
+        ,lengthChange   : false
+        ,fnDrawCallback : function() {
+          $('#results .table-wrapper td a').on('click', addToMap);
+        }
+      });
       syncQueryResults();
     }
   );
@@ -344,7 +351,7 @@ function syncFilters(cat) {
 }
 
 function syncQueryResults() {
-  $('#query-results tbody').empty();
+  $('#query-results').DataTable().clear();
   var i = 0;
   var c = catalog.filter(function(o) {
     var category = o.category == $('#categories.btn-group input:checked').attr('id');
@@ -352,8 +359,7 @@ function syncQueryResults() {
     var model = $('#model-list option:selected').val() == 'ALL' || $('#model-list option:selected').val() == o.org_model;
     return category && event && model;
   });
-  $('#query-results tbody').append(_.pluck(_.sortBy(c,function(o){return o.name.toUpperCase()}),'tr'));
-  $('#results .table-wrapper td a').on('click', addToMap);
+  $('#query-results').DataTable().rows.add(_.pluck(_.sortBy(c,function(o){return o.name.toUpperCase()}),'tr')).draw();
   $('ul.nav li:first-child a').on('click', function(e){
     e.preventDefault();
     if ($(this).hasClass('active'))
