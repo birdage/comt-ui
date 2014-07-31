@@ -195,6 +195,38 @@ $(document).ready(function(){
         if (d && d.storm && d.category && !_.isEmpty(d.layers) && !_.isEmpty(d.temporal)) {
           d.name = _.keys(o)[0];
           d.idx  = catalog.length;
+
+          var tSpan = '';
+          var minT = d.temporal[0];
+          var maxT = d.temporal[1];
+          if (minT != '' && maxT != '') {
+            if (isoDateToDate(minT).format('UTC:mmm d, yyyy') == isoDateToDate(maxT).format('UTC:mmm d, yyyy')) {
+              tSpan = isoDateToDate(minT).format('UTC:mmm d, yyyy');
+            }
+            else if (isoDateToDate(minT).format('UTC:yyyy') == isoDateToDate(maxT).format('UTC:yyyy')) {
+              if (isoDateToDate(minT).format('UTC:mmm') == isoDateToDate(maxT).format('UTC:mmm')) {
+                tSpan = isoDateToDate(minT).format('UTC:mmm d') + ' - ' + isoDateToDate(maxT).format('UTC:d, yyyy');
+              }
+              else {
+                tSpan = isoDateToDate(minT).format('UTC:mmm d') + ' - ' + isoDateToDate(maxT).format('UTC:mmm d, yyyy');
+              }
+            }
+            else {
+              tSpan = isoDateToDate(minT).format('UTC:mmm d, yyyy') + ' - ' + isoDateToDate(maxT).format('UTC:mmm d, yyyy');
+            }
+          }
+
+          var layers = [];
+          _.each(_.keys(d.layers).sort(),function(l) {
+            if (!name2Color[l]) {
+              name2Color[l] = buttonClasses[_.size(name2Color) % buttonClasses.length];
+            }
+            layers.push('<a href="#" data-name="' + l + '" class="btn btn-' + name2Color[l] + '">' + l + '</a>');
+          });
+
+          var thumb = '<img width=60 height=60 src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyBuB8P_e6vQcucjnE64Kh2Fwu6WzhMXZzI&path=weight:1|fillcolor:0x0000AA11|color:0x0000FFBB|' + d.spatial[1] + ',' + d.spatial[0] + '|' + d.spatial[1] + ',' + d.spatial[2] + '|' + d.spatial[3] + ',' + d.spatial[2] + '|' + d.spatial[3] + ',' + d.spatial[0] + '|' + d.spatial[1] + ',' + d.spatial[0] + '&size=60x60&sensor=false" title="Data boundaries" alt="Data boundaries">';
+          d.tr = '<tr id="row_' + i++ +'"><td title="' + d.name + '" data-idx="' + d.idx + '"><div class="thumbnail">' + thumb + '</div><div class="title">' + d.name + '</div><br /><div class="time-range"><div class="time-range-label"><span class="glyphicon glyphicon-time"></span>Time Range</div><input type="text" name="timeRange" value="' + tSpan + '" disabled class="form-control"></div><div class="download-data"><a target=_blank href="' + d.url + '" title="Download Data"><span class="glyphicon glyphicon-download"></span>Download Data</a></div>' + layers.join(', ') + '</td></tr>';
+
           catalog.push(d);
         }
       });
@@ -318,38 +350,8 @@ function syncQueryResults() {
     var model = $('#model-list option:selected').val() == 'ALL' || $('#model-list option:selected').val() == o.org_model;
     return category && event && model;
   });
-  _.each(_.sortBy(c,function(o){return o.name.toUpperCase()}),function(o) {
-    var layers = [];
-    _.each(_.keys(o.layers).sort(),function(l) {
-      if (!name2Color[l]) {
-        name2Color[l] = buttonClasses[_.size(name2Color) % buttonClasses.length];
-      }
-      layers.push('<a href="#" data-name="' + l + '" class="btn btn-' + name2Color[l] + '">' + l + '</a>');
-    });
-    var tSpan = '';
-    var minT = o.temporal[0];
-    var maxT = o.temporal[1];
-    if (minT != '' && maxT != '') {
-      if (isoDateToDate(minT).format('UTC:mmm d, yyyy') == isoDateToDate(maxT).format('UTC:mmm d, yyyy')) {
-        tSpan = isoDateToDate(minT).format('UTC:mmm d, yyyy');
-      }
-      else if (isoDateToDate(minT).format('UTC:yyyy') == isoDateToDate(maxT).format('UTC:yyyy')) {
-        if (isoDateToDate(minT).format('UTC:mmm') == isoDateToDate(maxT).format('UTC:mmm')) {
-          tSpan = isoDateToDate(minT).format('UTC:mmm d') + ' - ' + isoDateToDate(maxT).format('UTC:d, yyyy');
-        }
-        else {
-          tSpan = isoDateToDate(minT).format('UTC:mmm d') + ' - ' + isoDateToDate(maxT).format('UTC:mmm d, yyyy');
-        }
-      }
-      else {
-        tSpan = isoDateToDate(minT).format('UTC:mmm d, yyyy') + ' - ' + isoDateToDate(maxT).format('UTC:mmm d, yyyy');
-      }
-    }
-    var thumb = '<img width=60 height=60 src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyBuB8P_e6vQcucjnE64Kh2Fwu6WzhMXZzI&path=weight:1|fillcolor:0x0000AA11|color:0x0000FFBB|' + o.spatial[1] + ',' + o.spatial[0] + '|' + o.spatial[1] + ',' + o.spatial[2] + '|' + o.spatial[3] + ',' + o.spatial[2] + '|' + o.spatial[3] + ',' + o.spatial[0] + '|' + o.spatial[1] + ',' + o.spatial[0] + '&size=60x60&sensor=false" title="Data boundaries" alt="Data boundaries">';
-    $('#query-results tbody').append('<tr id="row_' + i++ +'"><td title="' + o.name + '" data-idx="' + o.idx + '"><div class="thumbnail">' + thumb + '</div><div class="title">' + o.name + '</div><br /><div class="time-range"><div class="time-range-label"><span class="glyphicon glyphicon-time"></span>Time Range</div><input type="text" name="timeRange" value="' + tSpan + '" disabled class="form-control"></div><div class="download-data"><a target=_blank href="' + o.url + '" title="Download Data"><span class="glyphicon glyphicon-download"></span>Download Data</a></div>' + layers.join(', ') + '</td></tr>');
-  });
+  $('#query-results tbody').append(_.pluck(_.sortBy(c,function(o){return o.name.toUpperCase()}),'tr'));
   $('#results .table-wrapper td a').on('click', addToMap);
-
   $('ul.nav li:first-child a').on('click', function(e){
     e.preventDefault();
     if ($(this).hasClass('active'))
