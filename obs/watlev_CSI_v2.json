@@ -1,0 +1,45 @@
+{
+    "getObs": {
+        "offering": "",
+        "procedure": "urn:tds:station.sos:",
+        "url": "http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_CSI_v2.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22"
+    },
+    "stations": [
+        {
+            "CSI_05": {
+                "spatial": [
+                    -90.53333282470703,
+                    29.053333282470703
+                ],
+                "temporal": [
+                    "2008-08-11T14:00:00",
+                    "2008-09-30T00:00:00"
+                ]
+            }
+        },
+        {
+            "CSI_06": {
+                "spatial": [
+                    -90.48332977294922,
+                    28.866666793823242
+                ],
+                "temporal": [
+                    "2008-08-11T14:00:00",
+                    "2008-09-30T00:00:00"
+                ]
+            }
+        },
+        {
+            "CSI_15": {
+                "spatial": [
+                    -90.83200073242188,
+                    28.833166122436523
+                ],
+                "temporal": [
+                    "2008-08-11T14:00:00",
+                    "2008-09-30T00:00:00"
+                ]
+            }
+        }
+    ]
+}

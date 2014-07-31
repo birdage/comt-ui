@@ -1,0 +1,105 @@
+{
+    "getObs": {
+        "offering": "",
+        "procedure": "urn:tds:station.sos:",
+        "url": "http://testbedapps-dev.sura.org/thredds/sos/imeds/measurement/watlev_USGS-DEPL_beach.nc?request=GetObservation&service=SOS&version=1.0.0&responseFormat=text/xml;schema%3D%22om/1.0.0%22"
+    },
+    "stations": [
+        {
+            "USGS-DEPL_SSS-TX-GAL-008": {
+                "spatial": [
+                    -94.7510986328125,
+                    29.334400177001953
+                ],
+                "temporal": [
+                    "2008-09-10T18:00:00",
+                    "2008-09-21T04:59:00"
+                ]
+            }
+        },
+        {
+            "USGS-DEPL_SSS-TX-GAL-010": {
+                "spatial": [
+                    -94.87779998779297,
+                    29.238100051879883
+                ],
+                "temporal": [
+                    "2008-09-10T18:00:00",
+                    "2008-09-21T04:59:00"
+                ]
+            }
+        },
+        {
+            "USGS-DEPL_SSS-TX-GAL-015": {
+                "spatial": [
+                    -95.11720275878906,
+                    29.08609962463379
+                ],
+                "temporal": [
+                    "2008-09-10T18:00:00",
+                    "2008-09-21T04:59:00"
+                ]
+            }
+        },
+        {
+            "USGS-DEPL_SSS-TX-MAT-005": {
+                "spatial": [
+                    -95.97810363769531,
+                    28.60059928894043
+                ],
+                "temporal": [
+                    "2008-09-10T18:00:00",
+                    "2008-09-21T04:59:00"
+                ]
+            }
+        },
+        {
+            "USGS-DEPL_SSS-TX-MAT-008": {
+                "spatial": [
+                    -95.62689971923828,
+                    28.76420021057129
+                ],
+                "temporal": [
+                    "2008-09-10T18:00:00",
+                    "2008-09-21T04:59:00"
+                ]
+            }
+        },
+        {
+            "USGS-DEPL_SSS-TX-GAL-001": {
+                "spatial": [
+                    -94.63420104980469,
+                    29.451400756835938
+                ],
+                "temporal": [
+                    "2008-09-10T18:00:00",
+                    "2008-09-21T04:59:00"
+                ]
+            }
+        },
+        {
+            "USGS-DEPL_SSS-TX-JEF-002": {
+                "spatial": [
+                    -94.0436019897461,
+                    29.674999237060547
+                ],
+                "temporal": [
+                    "2008-09-10T18:00:00",
+                    "2008-09-21T04:59:00"
+                ]
+            }
+        },
+        {
+            "USGS-DEPL_SSS-TX-JEF-009": {
+                "spatial": [
+                    -94.0884017944336,
+                    29.662700653076172
+                ],
+                "temporal": [
+                    "2008-09-10T18:00:00",
+                    "2008-09-21T04:59:00"
+                ]
+            }
+        }
+    ]
+}

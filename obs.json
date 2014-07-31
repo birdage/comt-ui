@@ -1,4 +1,4 @@
-var obs = [
+[
     {
         "watlev_USGSPERM_AL": {
             "category": "inundation_tropical",
@@ -1217,4 +1217,4 @@ var obs = [
             "url": "http://testbedapps-dev.sura.org/thredds/catalog/imeds/measurement/catalog.html?dataset=imeds/measurement/watlev_CRMS.C.nc"
         }
     }
-];
+]
