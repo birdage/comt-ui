@@ -145,7 +145,7 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 	border-top 	: none;
 }
 
-#results > div > table > tbody > tr > td,
+#results td,
 #active-layers > div > table > tbody > tr > td,
 #time-series-controls {
 	overflow-x		: hidden;
@@ -158,7 +158,7 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 
 }
 
-#results > div > table > tbody > tr > td:hover {
+#results td:hover {
 	background-color: #d0dce2;
 	background-image: -webkit-linear-gradient(top, #e6f2f8, #d0dce2);
 	background-image:    -moz-linear-gradient(top, #e6f2f8, #d0dce2);
@@ -167,7 +167,7 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 	background-image:         linear-gradient(to bottom, #e6f2f8, #d0dce2);
 }
 
-#results > div > table > tbody > tr > td > div.title {
+#results .title {
 	font-size		: 18px;
 	padding-bottom	: 5px;
 	display			: inline-block;
@@ -357,4 +357,8 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 
 .slider.slider-vertical .slider-track {
 	background: #BABABA;
+}
+
+.dataTables_wrapper.no-footer .dataTables_scrollBody {
+  border-bottom: none;
 }
