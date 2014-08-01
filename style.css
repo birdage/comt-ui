@@ -135,6 +135,10 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 	margin-top	: 3px;
 }
 
+#results {
+	margin-top: 15px;
+}
+
 #results div.title a {
 	color: #333;
 }

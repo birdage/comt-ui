@@ -192,7 +192,7 @@ $(document).ready(function(){
     }
   });
 
-  $('.selectpicker').selectpicker({width:'auto'}).on('change', filterValueSelect);
+  $('.selectpicker').selectpicker().on('change', filterValueSelect);
 
   $.when(
     $.ajax({
