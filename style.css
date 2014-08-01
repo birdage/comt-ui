@@ -366,3 +366,7 @@ button.btn.dropdown-toggle.selectpicker.btn-default {
 .dataTables_wrapper.no-footer .dataTables_scrollBody {
   border-bottom: none;
 }
+
+#active-layers .table-wrapper table tbody tr td > div {
+	height: 44px;
+}
