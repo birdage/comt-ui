@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "T": {
+            "SEAMAP_TD09": {
                 "spatial": [
                     -97.0675,
                     27.75017

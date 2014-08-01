@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "S": {
+            "SEAMAP_SM84": {
                 "spatial": [
                     -97.227,
                     27.1855

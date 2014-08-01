@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "W": {
+            "SEAMAP_WD03": {
                 "spatial": [
                     -94.5515,
                     28.29783

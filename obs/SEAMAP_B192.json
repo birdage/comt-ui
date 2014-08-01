@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "B": {
+            "SEAMAP_B192": {
                 "spatial": [
                     -89.7335,
                     28.946

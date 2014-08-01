@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "E": {
+            "LUMCON_E1": {
                 "spatial": [
                     -90.4883,
                     28.9155
