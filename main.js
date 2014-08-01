@@ -184,6 +184,7 @@ $(document).ready(function(){
   $('#query-results').DataTable({
      searching      : false
     ,lengthChange   : false
+    ,iDisplayLength : 50
     ,sScrollY       : $(window).height() - activeMapLayersTableOffset - queryResultsFooterOffset
     ,fnDrawCallback : function() {
       $('#results .table-wrapper td a').on('click', addToMap);
