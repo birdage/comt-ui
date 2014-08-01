@@ -34,6 +34,9 @@ var lineColors = [
   ,['#B3B3B3','#666666']
 ];
 
+var activeMapLayersTableOffset = 170;
+var queryResultsFooterOffset = 40;
+
 function resize() {
   var 	mapOffset 	= 103,
         resultsTableOffset = 170,
@@ -43,6 +46,8 @@ function resize() {
   $('#mapView').height($(window).height() - mapOffset - sliderOffset - timeSliderOffset);
   $('#results .table-wrapper').height($(window).height() - resultsTableOffset);
   $('#active-layers .table-wrapper').height($(window).height() - activeMapLayersTableOffset);
+  $('#query-results_wrapper .dataTables_scrollBody').css('height',$(window).height() - activeMapLayersTableOffset - queryResultsFooterOffset);
+  $('#query-results_wrapper .dataTables_scrollBody').css('overflow-x','hidden');
   if (hasScrollBar($('#active-layers .table-wrapper')[0]))
     $('#active-layers table tbody td:last-child').css('width', '37px');
   else {
@@ -179,8 +184,10 @@ $(document).ready(function(){
   $('#query-results').DataTable({
      searching      : false
     ,lengthChange   : false
+    ,sScrollY       : $(window).height() - activeMapLayersTableOffset - queryResultsFooterOffset
     ,fnDrawCallback : function() {
       $('#results .table-wrapper td a').on('click', addToMap);
+      $('.dataTables_scrollHead').hide();
     }
   });
 
