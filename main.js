@@ -702,6 +702,25 @@ function query(xy) {
           d.color = lineColors[plotData.length % lineColors.length][0];
           plotData.push(d);
         }
+        // special case for uwind,vwind
+        if (this.v == 'u,v' && r.properties['uwind'] && r.properties['vwind']) {
+          var d = {
+             data  : []
+            ,vData : []
+            ,label : '<a target=_blank href="' + this.url + '">' + '&nbsp;' + this.title + ' (' + r.properties['u'].units + ')' + '</a>'
+          };
+          for (var i = 0; i < r.properties.time.values.length; i++) {
+            var u = r.properties['uwind'].values[i];
+            var v = r.properties['vwind'].values[i];
+            var spd = Math.sqrt(Math.pow(u,2) + Math.pow(v,2));
+            var dir = Math.atan2(u,v) * 180 / Math.PI;
+            dir += dir < 0 ? 360 : 0;
+            d.data.push([isoDateToDate(r.properties.time.values[i]).getTime(),spd]);
+            d.vData.push([isoDateToDate(r.properties.time.values[i]).getTime(),dir]);
+          }
+          d.color = lineColors[plotData.length % lineColors.length][0];
+          plotData.push(d);
+        }
         else if (r.properties[this.v]) {
           var d = {
              data  : []
