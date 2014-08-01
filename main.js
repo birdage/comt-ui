@@ -151,6 +151,12 @@ $(document).ready(function(){
     })}
   );
 
+  $('body').on('click', function(e){
+    if ($('.popover.fade.right.in').css('display') == 'block')
+      if (!$(e.target.parentNode).hasClass('popover') && !$(e.target.parentNode).hasClass('popover-link'))
+        $('.popover').popover('hide');
+  });
+
   map = new OpenLayers.Map('mapView',{
     layers  : [
       new OpenLayers.Layer.XYZ(
