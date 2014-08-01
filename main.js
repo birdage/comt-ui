@@ -703,7 +703,7 @@ function query(xy) {
           plotData.push(d);
         }
         // special case for uwind,vwind
-        if (this.v == 'u,v' && r.properties['uwind'] && r.properties['vwind']) {
+        if (this.v == 'uwind,vwind' && r.properties['uwind'] && r.properties['vwind']) {
           var d = {
              data  : []
             ,vData : []
