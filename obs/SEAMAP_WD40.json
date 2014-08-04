@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "SEAMAP_WD40": {
+            "WD40": {
                 "spatial": [
                     -94.8355,
                     29.15583

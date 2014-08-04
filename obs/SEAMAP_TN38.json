@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "SEAMAP_TN38": {
+            "TN38": {
                 "spatial": [
                     -94.50933,
                     28.01533

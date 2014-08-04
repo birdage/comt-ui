@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "SEAMAP_EN03": {
+            "EN03": {
                 "spatial": [
                     -88.95333,
                     29.0895

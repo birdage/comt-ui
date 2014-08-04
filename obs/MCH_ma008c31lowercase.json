@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "MCH_ma008c31lowercase": {
+            "ma008c31": {
                 "spatial": [
                     -91.6513,
                     29.0127

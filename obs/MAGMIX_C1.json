@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "MAGMIX_C1": {
+            "C1": {
                 "spatial": [
                     -89.7512,
                     29.0693

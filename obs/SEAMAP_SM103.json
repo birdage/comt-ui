@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "SEAMAP_SM103": {
+            "SM103": {
                 "spatial": [
                     -88.9983,
                     29.007

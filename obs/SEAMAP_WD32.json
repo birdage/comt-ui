@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "SEAMAP_WD32": {
+            "WD32": {
                 "spatial": [
                     -95.52533,
                     28.46367

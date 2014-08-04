@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "SEAMAP_TN17": {
+            "TN17": {
                 "spatial": [
                     -96.0715,
                     28.056

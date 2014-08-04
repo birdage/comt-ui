@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "SEAMAP_SM112": {
+            "SM112": {
                 "spatial": [
                     -97.0095,
                     26.01867

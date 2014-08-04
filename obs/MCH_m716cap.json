@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "MCH_m716cap": {
+            "m716cap": {
                 "spatial": [
                     -92.0388,
                     28.9649

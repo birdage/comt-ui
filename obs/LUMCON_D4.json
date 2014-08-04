@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "LUMCON_D4": {
+            "D4": {
                 "spatial": [
                     -90.454,
                     28.855

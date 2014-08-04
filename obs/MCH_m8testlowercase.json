@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "MCH_m8testlowercase": {
+            "m8test": {
                 "spatial": [
                     -91.9947,
                     29.0013

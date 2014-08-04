@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "MAGMIX_I2": {
+            "I2": {
                 "spatial": [
                     -92.7507,
                     28.6415

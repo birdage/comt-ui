@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "MCH_moorcm": {
+            "moorcm": {
                 "spatial": [
                     -90.3197,
                     28.8789

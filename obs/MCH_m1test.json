@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "MCH_m1test": {
+            "m1test": {
                 "spatial": [
                     -90.4102,
                     28.6504

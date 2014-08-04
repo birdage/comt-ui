@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "SEAMAP_SM55": {
+            "SM55": {
                 "spatial": [
                     -97.24966,
                     26.55717

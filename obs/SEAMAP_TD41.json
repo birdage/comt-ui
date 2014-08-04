@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "SEAMAP_TD41": {
+            "TD41": {
                 "spatial": [
                     -95.94617,
                     28.20367

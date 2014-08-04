@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "MCH_ma005cp": {
+            "ma005cp": {
                 "spatial": [
                     -92.4567,
                     28.9236

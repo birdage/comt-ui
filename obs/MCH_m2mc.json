@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "MCH_m2mc": {
+            "m2mc": {
                 "spatial": [
                     -91.9088,
                     29.121

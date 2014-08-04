@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "SEAMAP_SM99": {
+            "SM99": {
                 "spatial": [
                     -96.827,
                     27.39133

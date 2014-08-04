@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "LUMCON_c9lowercase": {
+            "c9": {
                 "spatial": [
                     -90.5303,
                     29.0562

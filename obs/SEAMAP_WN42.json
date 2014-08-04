@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "SEAMAP_WN42": {
+            "WN42": {
                 "spatial": [
                     -93.9542,
                     28.0307

@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "MCH_ma010bp": {
+            "ma010bp": {
                 "spatial": [
                     -91.3498,
                     28.7028

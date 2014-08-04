@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "SEAMAP_ED23": {
+            "ED23": {
                 "spatial": [
                     -88.7262,
                     29.2677

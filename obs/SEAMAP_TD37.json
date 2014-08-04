@@ -6,7 +6,7 @@
     },
     "stations": [
         {
-            "SEAMAP_TD37": {
+            "TD37": {
                 "spatial": [
                     -96.29183,
                     28.43517
